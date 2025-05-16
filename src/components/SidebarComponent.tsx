@@ -15,22 +15,23 @@ import chatIcon from '../assets/icons/chat.svg';
 import agreementIcon from '../assets/icons/agreement.svg';
 import userIcon from '../assets/icons/user.svg';
 import logo from '../assets/icons/Isolation_Mode.svg';
+import { Link } from "react-router-dom";
 
 const SidebarComponent = () => {
     const items = [
         {
           title: "Dashboard",
-          url: "#",
+          url: "/",
           icon: dashboardIcon,
         },
         {
           title: "Plot",
-          url: "#",
+          url: "/plots",
           icon: plotIcon,
         },
         {
           title: "Agreements",
-          url: "#",
+          url: "/agreements",
           icon: agreementIcon,
         },
         {
@@ -40,13 +41,13 @@ const SidebarComponent = () => {
         },
         {
           title: "Investors",
-          url: "#",
+          url: "/investors",
           icon: userIcon,
         },
       ]
   return (
-    // <SidebarProvider>
-    <Sidebar>
+   
+    <Sidebar collapsible="icon"> 
     <SidebarContent>
       <SidebarHeader>
         <img src={logo} alt="logo" className="h-10"/>
@@ -58,10 +59,10 @@ const SidebarComponent = () => {
             {items.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url}>
+                  <Link to={item.url}>
                     <img src={item?.icon} alt="icon" />
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
@@ -70,7 +71,7 @@ const SidebarComponent = () => {
       </SidebarGroup>
     </SidebarContent>
   </Sidebar>
-  // </SidebarProvider>
+ 
   )
 }
 
