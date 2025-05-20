@@ -7,8 +7,8 @@ const CommonTable: React.FC = (props) => {
     const { data, header } = props;
 
     return (
-        <div className="m-4 p-4 bg-white shadow-xs overflow-auto w-full">
-  <table className="w-full bg-white dark:bg-gray-800 rounded-lg">
+        <div className="mt-4 p-4 bg-white shadow-xs  w-full border border-1 rounded-lg">
+            <table className="w-full bg-white dark:bg-gray-800 rounded-lg">
                 <thead className="top-0 bg-gray-100">
                     <tr className="p-10">
                         {header.map((item) => (
@@ -37,7 +37,7 @@ const CommonTable: React.FC = (props) => {
                                         <Link
                                             to={row[selector]}
                                             className="flex items-center text-[#83764F] underline underline-offset-2 decoration-[#83764F]"
-                                         
+
                                         >
                                             {row[selector]} <ArrowUpRight className="size-[16px]" />
                                         </Link>

@@ -1,6 +1,7 @@
-import Header from '@/components/Header';
 import { useState } from 'react';
 
+import Header from '@/components/Header';
+import DropDownComponent from '@/components/DropDownComponent';
 import CommonTable from '@/components/CommonTable';
 import Layout from '@/components/Layout';
 import CommonCard from '@/components/CommonCard';
@@ -8,7 +9,7 @@ import exportIcon from '../assets/exportIcon.png'
 import detailIcon from '../assets/icons/detailIcon.png';
 import searchIcon from '../assets/icons/search.svg';
 import gridIcon from '../assets/icons/gridIcon.png';
-import DropDownComponent from '@/components/DropDownComponent';
+
 
 const investorData = [
   { id: 1, name: 'John Bosco', CRNumber: 478929, fax: 'AK-LP-B-374837', website: 'www.soscowll.com', typeOfInvestor: 'Sole Proprietorship', createdOn: '25/11/2024 11:14', modifiedOn: '25/11/2024 12:13' },
@@ -40,6 +41,8 @@ const InvestorsPage = () => {
 
   const TableHeader = [
     { id: 1, selector: "name", title: "Investor Name", isLink: true },
+    // {id:1,cell:(row:any)=><Link to onClick={()=>handleShowItemModal(row)} className="bg-gray-500 text-white px-3 py-1 rounded-md shadow hover:bg-red-gray transition">
+    //   show order Details</Link>,title:'Action'}
     { id: 2, selector: "CRNumber", title: "CR Number" },
     { id: 3, selector: "fax", title: "Fax" },
     { id: 4, selector: "website", title: "Website", isLink: true },

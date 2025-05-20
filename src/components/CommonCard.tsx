@@ -18,8 +18,8 @@ const CommonCard = (props) => {
             </div>
             {/*  */}
             <div className='flex justify-between w-full py-1 bg-[#FAFAFA] px-4'>
-                <text className='font-light text-[#4F4C4D]'>Type of Investor</text>
-                <text>Sole Proprietorship</text>
+                <p className='font-light text-[#4F4C4D]'>Type of Investor</p>
+                <p>Sole Proprietorship</p>
             </div>
             <div className="flex items-center gap-2 px-4">
                 {/* Profile Image */}
@@ -40,8 +40,8 @@ const CommonCard = (props) => {
                 <text className='text-[14px] text-[#231F2099]'>Commencement Date</text>
             </div>
             <div className='flex justify-between'>
-                <text>25/11/2024 12:13</text>
-                <text>25/11/2024 11:14</text>
+                <p>25/11/2024 12:13</p>
+                <p>25/11/2024 11:14</p>
             </div>
             </div>
             
