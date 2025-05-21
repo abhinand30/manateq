@@ -1,16 +1,9 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+import {  ChevronRight,  } from "lucide-react";
+
+import {Sidebar,SidebarContent,SidebarFooter,SidebarGroup,SidebarGroupContent,
+  SidebarHeader,SidebarMenu,SidebarMenuButton,SidebarMenuItem,} from "@/components/ui/sidebar";
 import dashboardIcon from '../assets/icons/dashboard.svg';
 import plotIcon from '../assets/icons/plot.svg';
 import chatIcon from '../assets/icons/chat.svg';
@@ -20,7 +13,7 @@ import logo from '../assets/icons/Isolation_Mode.svg';
 import settingsIcon from '../assets/icons/settingIcon.png';
 import logoutIcon from '../assets/icons/logoutIcon.png';
 import profileImage from '../assets/profile.jpg';
-import { ArrowRight, ChevronRight, ForwardIcon } from "lucide-react";
+
 
 
 const SidebarComponent = () => {

@@ -1,57 +1,81 @@
-import { ArrowUpRight } from 'lucide-react';
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+
 // import { commonTableProps } from '../common/type/types';
 
 const CommonTable: React.FC = (props) => {
     const { data, header } = props;
+    const [sortColumn, setSortColumn] = useState<null | string>(null);
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const handleSort = (columnName: string) => {
+        if (sortColumn === columnName) {
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortColumn(columnName);
+            setSortOrder('asc');
+        }
+    };
+
+    const sortedData = [...data].sort((a, b) => {
+        if (sortColumn) {
+            const aValue = a[sortColumn];
+            const bValue = b[sortColumn];
+
+            if (typeof aValue === 'string' && typeof bValue === 'string') {
+                return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            } else if (typeof aValue === 'number' && typeof bValue === 'number') {
+                return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
+            } else {
+                return 0;
+            }
+        }
+        return 0;
+    });
 
     return (
-        <div className="mt-4 p-4 bg-white shadow-xs  w-full border border-1 rounded-lg">
-            <table className="w-full bg-white dark:bg-gray-800 rounded-lg">
-                <thead className="top-0 bg-gray-100">
-                    <tr className="p-10">
-                        {header.map((item) => (
-                            //  border-b border-slate-300
-                            <th
-                                className="p-4 w-auto text-nowrap  transition-colors cursor-pointer bg-slate-50 hover:bg-slate-100">
-                                <p
-                                    className="flex items-center justify-between gap-2 text-sm font-normal leading-none text-slate-800">
-                                    {item.title}
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2"
-                                        stroke="currentColor" aria-hidden="true" className="w-4 h-4">
+    <div className="mt-4 bg-white shadow-xs border border-1 w-auto rounded-lg">
+    {/* Scrollable table container */}
+    <div className="relative overflow-x-auto  m-4">
+        <table className="w-full  text-gray-500 dark:text-gray-400   bg-white dark:bg-gray-800 overflow-hidden">
+            <thead className="top-0 bg-gray-100 h-10 w-10">
+                <tr className="">
+                    {header.map((item) => (
+                        <th onClick={() => handleSort(item.name)}
+                            className="transition-colors cursor-pointer bg-slate-50 hover:bg-slate-100">
+                            <p className="flex items-center justify-between gap-2 text-sm font-normal leading-none text-slate-800">
+                                {item.title}
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2"
+                                    stroke="currentColor" aria-hidden="true" className="w-4 h-4">
+                                    {sortOrder === 'asc' ? (
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
-                                    </svg>
-                                </p>
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((row) => (
-                        <tr key={row.id} className="border-b border-slate-100 hover:bg-gray-100">
-                            {header.map(({ selector, isLink }, idx) => (
-                                <td key={idx} className="w-auto text-nowrap px-4 py-3 text-gray-600">
-                                    {isLink ? (
-                                        <Link
-                                            to={row[selector]}
-                                            className="flex items-center text-[#83764F] underline underline-offset-2 decoration-[#83764F]"
-
-                                        >
-                                            {row[selector]} <ArrowUpRight className="size-[16px]" />
-                                        </Link>
                                     ) : (
-                                        row[selector]
+                                        <path strokeLinecap="round" strokeLinejoin="round"
+                                            d="M8.25 9L12 5.25 15.75 9m-7.5 6L12 18.75 15.75 15"></path>
                                     )}
-                                </td>
-                            ))}
-                        </tr>
+                                </svg>
+                            </p>
+                        </th>
                     ))}
-                </tbody>
+                </tr>
+            </thead>
+            <tbody className=''>
+                {sortedData.map((row) => (
+                    <tr key={row.id} className="border-b border-slate-100 hover:bg-gray-100">
+                        {header.map(({ selector, cell }, idx:number) =>
+                            cell ? (
+                                <td key={idx} className=''>{cell(row)}</td>
+                            ) : (
+                                <td key={idx}>{row[selector]}</td>
+                            )
+                        )}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+</div>
 
-            </table>
-        </div>
     )
 }
 

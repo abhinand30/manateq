@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import Layout from '@/components/Layout'
 import buildingIcon from '../assets/icons/buildingIcon.png'
@@ -11,15 +12,24 @@ import ButtonComponent from '@/components/ButtonComponent';
 import expandIcon from "@/assets/icons/expandIcon.png"
 import searchIcon from '@/assets/icons/search.svg';
 import menuIcon from '@/assets/icons/menuIcon.png'
-// import { useLocation } from 'react-router-dom';
+import chatIcon from '@/assets/icons/chatIcon.png'
+import { emailData } from '@/data/data';
+import clipIcon from '@/assets/icons/clipIcon.png';
+import { getFirstLetters } from '@/lib/utils';
+import ViewMoreText from '@/components/ViewMore';
+
 
 const InvestorDetailPage = () => {
   const [activeTab, setActiveTab] = useState<number>(1);
+  
+  const location = useLocation();
+  const data = location.state?.data;
+  console.log(data)
   const investorData = [
-    { id: 1, title: 'CR Number', value: 1929 },
+    { id: 1, title: 'CR Number', value: data.CRNumber },
     { id: 2, title: 'Qatari Owned Percentage', value: 0 },
     { id: 3, title: 'Foreign Owned Percentage', value: 0 },
-    { id: 4, title: 'Owner', value: 'abdulla Ahammed' },
+    { id: 4, title: 'Owner', value:data.name },
   ];
 
   const tabArray = [
@@ -83,9 +93,9 @@ const InvestorDetailPage = () => {
             </ul>
           </div>
         </div>
-       
+
         {renderComponent()}
-       
+
       </div>
     </Layout>
   )
@@ -96,7 +106,10 @@ export default InvestorDetailPage;
 
 
 const Summary = () => {
-  const [isCollapse,setIsCollapse]=useState<boolean>(false);
+  const [isCollapse, setIsCollapse] = useState<boolean>(false);
+  const [openAccordion, setOpenAccordion] = useState(null);
+
+
   const investorArray = [
     { id: 1, title: 'Investor Information' },
     { id: 2, title: 'Investor Activities' },
@@ -104,23 +117,23 @@ const Summary = () => {
     { id: 4, title: 'Investor Profile' }
   ];
 
-  const [openAccordion, setOpenAccordion] = useState(null);
+
 
   const toggleAccordion = (id: any) => {
     setOpenAccordion(openAccordion === id ? null : id);
   };
   const investorInformationHeader = [
-    { id: 1, title: 'Investor Name', name:'investorName' },
-    { id: 2, title: 'Arabic Investor Name', name:'arabicInvestorName' },
-    { id: 3, title: 'Phone', name:'phone' },
-    { id: 4, title: 'Email', name:'email' },
-    { id: 5, title: 'Website', name:'website' },
-    { id: 6, title: 'PO BOX', name:'POBox' },
+    { id: 1, title: 'Investor Name', name: 'investorName' },
+    { id: 2, title: 'Arabic Investor Name', name: 'arabicInvestorName' },
+    { id: 3, title: 'Phone', name: 'phone' },
+    { id: 4, title: 'Email', name: 'email' },
+    { id: 5, title: 'Website', name: 'website' },
+    { id: 6, title: 'PO BOX', name: 'POBox' },
     { id: 7, title: 'Address', name: 'address' },
-    { id: 8, title: 'Arabic Investor Address', name: 'arabicInvestorAddress'},
+    { id: 8, title: 'Arabic Investor Address', name: 'arabicInvestorAddress' },
     { id: 9, title: 'Corporate HQ Location', name: 'corporateHQLocation' },
   ];
-  const investorInformationData={investorName:'',arabicInvestorName:'',phone:7838383,email:'sjsdjsj@gamil.com',website:'dhdj.com',POBox:'',address:'dkkddjkjd',arabicInvestorAddress:'',corporateHQLocation:''}
+  const investorInformationData = { investorName: '', arabicInvestorName: '', phone: 7838383, email: 'sjsdjsj@gamil.com', website: 'dhdj.com', POBox: '', address: 'dkkddjkjd', arabicInvestorAddress: '', corporateHQLocation: '' }
   const investorActivitiesData = [
     { id: 1, name: 1282, serial: 'Lama Yamout' },
     { id: 2, name: 1282, serial: 'Lama Yamout' },
@@ -150,7 +163,7 @@ const Summary = () => {
 
 
   const investorProfileHeader = [
-    { id: 1, name: 'onHold',title: 'On Hold' },
+    { id: 1, name: 'onHold', title: 'On Hold' },
     { id: 2, name: 'CRNumber', title: 'CRNumber' },
     { id: 3, name: 'CRInsuranceDate', title: 'CR InsuranceDate' },
     { id: 4, name: 'CRExpiryDate', title: 'CR Expiry Date' },
@@ -163,16 +176,16 @@ const Summary = () => {
     { id: 11, name: 'existingOperation', title: 'Existing Operation in Qatar' },
     { id: 12, name: 'primaryContact', title: 'Primary Contact' },
   ];
-  const investorProfile={onHold:'No',CRNumber:24863,CRInsuranceDate:'',CRExpiryDate:'',industrialLicenseNumber:162626,industrialInsuranceDate:7373737,investorCategory:'',legalStatus:'',sector:'',typeofOperation:'',existingOperation:'',primaryContact:47747448}
+  const investorProfile = { onHold: 'No', CRNumber: 24863, CRInsuranceDate: '', CRExpiryDate: '', industrialLicenseNumber: 162626, industrialInsuranceDate: 7373737, investorCategory: '', legalStatus: '', sector: '', typeofOperation: '', existingOperation: '', primaryContact: 47747448 }
 
-  const buttonArray=[
-    {id:1,title:'Expand All Records',icon:expandIcon,onClick:()=>(console.log('test')),style:'border-1 border-[#83764F]  text-[#83764F]'},
-    {id:2,title:'Refresh Timeline',icon:refreshIcon,onClick:()=>(console.log('test')),style:'border-1 border-[#83764F]  text-[#83764F]'},
-    {id:3,icon:searchIcon,onClick:()=>(console.log('test')),style:'bg-[#93A6B30F]'},
-    {id:4,icon:menuIcon,onClick:()=>(console.log('test')),style:'flex shadow-sm justify-center'},
-
-    
+  const buttonArray = [
+    { id: 1, title: 'Expand All Records', icon: expandIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
+    { id: 2, title: 'Refresh Timeline', icon: refreshIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
+    { id: 3, icon: searchIcon, onClick: () => (console.log('test')), style: 'bg-[#93A6B30F]' },
+    { id: 4, icon: menuIcon, onClick: () => (console.log('test')), style: 'flex shadow-sm justify-center' },
   ]
+
+
   return (
     <div >
 
@@ -181,7 +194,7 @@ const Summary = () => {
           {investorArray.map((investor) => (
             <div key={investor.id} className='border-t-1  border-gray-200 dark:border-gray-700'>
               <h2 id={`accordion-heading-${investor.id}`}>
-                <button className={`flex items-center justify-between w-full p-5 font-medium  ${openAccordion === investor.id?'text-[#862634]':'text-gray-500'}  dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3`}
+                <button className={`flex items-center justify-between w-full p-5 font-medium  ${openAccordion === investor.id ? 'text-[#862634]' : 'text-gray-500'}  dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3`}
                   onClick={() => toggleAccordion(investor.id)}
                   aria-expanded={openAccordion === investor.id}
                   aria-controls={`accordion-body-${investor.id}`}
@@ -247,43 +260,66 @@ const Summary = () => {
         </div>
       </div>
       {/* Timeline */}
-      <div className='p-4 bg-white shadow-sm mt-5'>
+      <div className='p-4 bg-white shadow-sm mt-5 rounded-lg'>
         <div className='flex justify-between'>
           <p className='text-[#862634]'>Timeline</p>
           <div className='flex gap-3'>
-                {buttonArray.map((button)=>(
-                  <ButtonComponent onClick={button.onClick} style={button.style}>
-                      <img src={button.icon}/>
-                      <span>{button.title}</span>
-                  </ButtonComponent>
-                ))}
+            {buttonArray.map((button) => (
+              <ButtonComponent onClick={button.onClick} style={button.style}>
+                <img src={button.icon} />
+                <span>{button.title}</span>
+              </ButtonComponent>
+            ))}
+          </div>
+
+        </div>
+        <div>
+
+          <div className='relative w-full mt-5'>
+          <textarea id="message" rows={3} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter a note..."></textarea>
+          <img src={clipIcon}  alt='icon'className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 cursor-pointer"/>
           </div>
          
+
         </div>
         <div className='flex gap-5 mt-10 items-center'>
-            <hr className='w-[90%]'/>
-            <div className='flex gap-2 items-center' onClick={()=>setIsCollapse(!isCollapse)}>
-              Collapse
-              <svg
-                    className={`w-3 h-3 shrink-0 ${isCollapse  ? 'rotate-180' : ''}`}
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  > <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5 5 1 1 5"
-                /></svg>
+          <hr className='w-[90%]' />
+          <div className='flex gap-2 items-center' onClick={() => setIsCollapse(!isCollapse)}>
+            {isCollapse ? 'Collapse' : 'Expand'}
+            <svg
+              className={`w-3 h-3 shrink-0 ${isCollapse ? '' : 'rotate-180'}`}
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            > <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5 5 1 1 5"
+              /></svg>
+          </div>
+        </div>
+        <div >
+          {isCollapse && (
+            emailData.map((email, index) => (
+              <div className='flex gap-2 mt-5'>
+                <div className='flex size-[40px] bg-[#E7D4D680] rounded-full items-center justify-center text-[#862634]'>
+                  <span>{getFirstLetters(email.user)}</span>
+                </div>
+                <div className='border border-1 w-[95%] p-4 rounded-sm'>
+
+                  <div className='flex bg-[#862634] gap-2 text-white p-1 px-2 rounded-r-lg rounded-l-e-sm rounded-bl-lg w-[270px]'><img src={chatIcon} alt='logo' className='size-[20px]' />Email from:<Link to='#' className='underline'>Salman Hameed</Link></div>
+                  <ViewMoreText text={email.msg} />
+                </div>
+
               </div>
-          </div>
-          <div>
-            <div className=''>
-              <span>SH</span>
-            </div>
-          </div>
+            ))
+
+          )}
+
+        </div>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import AgreementsPage from "./pages/AgreementsPage"
 import InvestorsPage from "./pages/InvestorsPage"
 import ServiceRequestsPage from "./pages/ServiceRequestsPage"
 import InvestorDetailPage from './pages/InvestorDetailPage'
+import PlotDetailsPage from "./pages/PlotDetailsPage"
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
     {
       path: "/investors/:id", 
       element: <InvestorDetailPage />, 
+    },
+     {
+      path: "/plots/:id", 
+      element: <PlotDetailsPage />, 
     },
   ]);
   
