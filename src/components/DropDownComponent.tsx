@@ -1,6 +1,6 @@
-import React from 'react'
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from 'lucide-react'
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
+
 
     const DropDownComponent = (props) => {
         const { value, setValue, data, title } = props

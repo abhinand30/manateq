@@ -35,7 +35,7 @@ const SidebarComponent = () => {
     },
     {
       title: "Service Requests",
-      url: "#",
+      url: "/service-requests",
       icon: chatIcon,
     },
     {

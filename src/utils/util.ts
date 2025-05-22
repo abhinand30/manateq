@@ -9,3 +9,4 @@ export function formatDuration(totalSeconds:number) {
     
     return `${hours} hr`;
   }
+  

@@ -16,9 +16,9 @@ import CommonCard from '@/components/CommonCard';
 
 // 
 const statusArray = [
-  { id: 1, name: 'All', value: 'active' },
-  { id: 2, name: 'Allocated', value: 'inactive' },
-  { id: 3, name: 'No Longer Used', value: 'notUsed' },
+  { id: 1, name: 'All', value: 'all' },
+  { id: 2, name: 'Allocated', value: 'allocated' },
+  { id: 3, name: 'No Longer Used', value: 'NoLongerUsed' },
   { id: 3, name: 'On Hold', value: 'onHold' }
 ]
 const applicationTypeArray = [
@@ -34,10 +34,10 @@ const applicationTypeArray = [
   { id: 10, name: 'Service', value: 'service' },
   { id: 11, name: 'Water Front', value: 'waterFront' },
 ];
-// const filterArray = [
-//   { id: 1, name: 'Zones', value: 'zones' },
-//   { id: 2, name: 'Clusters', value: 'clusters' },
-// ]
+const filterArray = [
+  { id: 1, name: 'Zones', value: 'zones' },
+  { id: 2, name: 'Clusters', value: 'clusters' },
+]
 
 
 
@@ -67,10 +67,13 @@ const plotData = [
 
 const PlotsPage = () => {
   const navigate=useNavigate();
-  const [status, setStatus] = useState<string>('');
-  const [sort, setSort] = useState('');
   const [grid, setGrid] = useState<boolean>(false);
-  // const [filter, setFilter] = useState<string>('');
+  const [filters, setFilters] = useState({
+    status: '',
+    applicationType:'',
+    filter: '',
+  });
+
 
   const TableHeader = [
     // { id: 1, selector: "plot", title: "Plot Number", isLink: true },
@@ -98,6 +101,10 @@ const PlotsPage = () => {
     setGrid(!grid);
   }
 
+  const handleChange = (key:string, value:any) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  };
+
   return (
     <Layout>
       <Header />
@@ -107,9 +114,24 @@ const PlotsPage = () => {
           <button className='flex size-10 rounded-sm shadow-lg items-center justify-center'>
             <img src={searchIcon} className='size-6' />
           </button>
-          <DropDownComponent value={status} setvalue={setStatus} data={statusArray} title={'Status'} />
-          <DropDownComponent value={sort} setValue={setSort} data={applicationTypeArray} title={'Application Type'} />
-          <DropDownComponent value={sort} setValue={setSort} data={applicationTypeArray} title={'Filter By'} />
+           <DropDownComponent
+            value={filters.status}
+            setValue={(value: any) => handleChange('status', value)}
+            data={statusArray}
+            title="Status"
+          />
+            <DropDownComponent
+            value={filters.applicationType}
+            setValue={(value: any) => handleChange('applicationType', value)}
+            data={applicationTypeArray}
+            title="Application Type"
+          />
+          <DropDownComponent
+            value={filters.filter}
+            setValue={(value: any) => handleChange('sort', value)}
+            data={filterArray}
+            title="Filter By"
+          />
         </div>
 
         <div className='flex gap-5'>
@@ -133,7 +155,7 @@ const PlotsPage = () => {
         </div>
 
       ) : (
-        <div className='overflow-x-hidden'>
+        <div className='overflow-x-scroll'>
           <CommonTable data={plotData} header={TableHeader} />
         </div>
 
