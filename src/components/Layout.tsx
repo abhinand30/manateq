@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     <SidebarProvider>
       <div className="flex w-full">
         <SidebarComponent />
-        <main className="w-full">
+        <main className="w-full bg-[#F8F8F8]">
           <SidebarTrigger />
           {children} 
         </main>

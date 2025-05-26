@@ -14,8 +14,6 @@ import {  type DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-me
 import {
   Card,
   CardContent,
-  // CardDescription,
-  // CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -25,7 +23,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 

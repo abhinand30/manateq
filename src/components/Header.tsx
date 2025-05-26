@@ -13,7 +13,7 @@ const Header = () => {
                 <span>Hello,</span>
                 <h6>Mushthofa Ahmad Kamal</h6>
             </div>
-            <div className='flex gap-4 w-200 shadow-sm p-3 rounded-xl'>
+            <div className='flex bg-[#ffffff] gap-4 w-200 shadow-sm p-3 rounded-xl'>
                 <img src={searchIcon}/>
                 <input
                     className="w-100"

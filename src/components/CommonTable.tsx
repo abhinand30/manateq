@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-// import { commonTableProps } from '../common/type/types';
 
 const CommonTable: React.FC = (props) => {
     const { data, header } = props;

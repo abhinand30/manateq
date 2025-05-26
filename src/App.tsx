@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-import DashboardPage from "./pages/DashboardPage"
+import DashboardPage from "./pages/dashBoard"
 import NotFound from "./pages/NotFound"
 import PlotsPage from "./pages/PlotsPage"
 import AgreementsPage from "./pages/AgreementsPage"

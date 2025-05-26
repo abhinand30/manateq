@@ -1,67 +1,55 @@
-import React from 'react'
+import { Check } from 'lucide-react'
 
-const ProgressCard = () => {
-    //Agreement Business Process": {
-//             "Duration": "27 days",
-            const Stages= [
-                {
-                    "Stage": "Assigned to PA & L User",
-                    "Date": "14/12/2024",
-                    "Duration": "4hr 30min"
-                },
-                {
-                    "Stage": "PA & L User Decision",
-                    "Date": "14/12/2024",
-                    "Duration": "4hr 30min"
-                },
-                {
-                    "Stage": "PA & L Manager Decision",
-                    "Date": "14/12/2024",
-                    "Duration": "4hr 30min"
-                },
-                {
-                    "Stage": "Finance Review",
-                    "Date": null,
-                    "Duration": null
-                },
-                {
-                    "Stage": "PA & L Zone Director Decision",
-                    "Date": null,
-                    "Duration": null
-                },
-                {
-                    "Stage": "Customer Signature",
-                    "Date": null,
-                    "Duration": null
-                },
-                {
-                    "Stage": "BS Zone Director Decision",
-                    "Date": null,
-                    "Duration": null
-                },
-                {
-                    "Stage": "End",
-                    "Date": null,
-                    "Duration": null
-                }
-            ]
-//         }
-//     }
-  return (
-    <div className='shadow-sm p-4'>
-        <div className='flex'>
-            <div>
-                    <p className='text-[14px]'>Agreement Business Process</p>
-                    <p className='text-[14px]'>Active for 27 days</p>
+
+const ProgressCard = (props) => {
+    const {data}=props;
+
+    
+
+    return (
+        <div className='shadow-sm p-4 w-auto '>
+            <div className='flex justify-between'>
+                <div>
+                    <p className='text-[20px]'>Agreement Business Process</p>
+                    <p className='text-[14px] text-[#918F90]'>Active for {data.duration} days</p>
+                </div>
+
+                <button>Close</button>
             </div>
-            
-           <button>Close</button>
+            <div className='border-1 p-4'>
+                <h3 className='uppercase text-[#83764F]'>Agreement stages</h3>
+                <div>
+                    {data.stages.map((stage, index:number) => (
+                        <div key={index}>
+
+                        <div className="flex gap-5 items-center" >
+                            <div className="flex size-[40px] rounded-full items-center justify-center"
+                                style={{
+                                    backgroundColor: stage.status === "completed" ? "#31AD80" : "transparent",
+                                    border: stage.status === "inProcess" ? "1px solid #31AD80" : "1px solid #E5E5E5"
+                                }}
+                            >
+                                {stage.status === "completed" && <Check size={25} color="#fff" />}
+                                {stage.status === "inProcess" && <div className="size-[15px] bg-[#31AD80] rounded-full"></div>}
+                            </div>
+                            <div>
+                                <p className="text-[#31AD80]">{stage?.stage}</p>
+                                <p className="text-[#918F90]">
+                                    {stage.date ? `${stage?.date} - ` : "No date available"}
+                                    <span> {stage?.duration}</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div className={`h-[30px] py-2 border-l-2 ${stage.status === 'completed' ? 'border-[#31AD80]' : 'border-dashed border-[#E5E5E5]'}`} />
+
+
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
-        <div className='border-1 '>
-                 <button className='uppercase'>Agreement Stages</button>
-            </div>
-    </div>
-  )
+    )
 }
 
 export default ProgressCard

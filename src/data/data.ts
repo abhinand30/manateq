@@ -22,3 +22,12 @@ export const emailData = [
     }
   ];
   
+
+   export const exportTypeArray = [
+    { id: 1, name: 'EZ Applications', value: 'EZApplication' },
+    { id: 2, name: 'LP Applications', value: 'LPApplication' },
+    { id: 3, name: 'Commercial and Waterfront Applications', value: 'commercialAndWaterfrontApplications' },
+    { id: 4, name: 'Industrial Applications', value: 'industrial Applications' },
+    { id: 5, name: 'Ready Mix Applications', value: 'readyMixApplications' },
+    { id: 6, name: 'Warehouse Applications', value: 'warehouseApplications' },
+  ];

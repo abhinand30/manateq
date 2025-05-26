@@ -76,7 +76,7 @@ const PlotsPage = () => {
 
 
   const TableHeader = [
-    // { id: 1, selector: "plot", title: "Plot Number", isLink: true },
+  
     {id:1,cell:(row:any)=><button onClick={() => navigate(`${row?.plot}`, { state: { data: row } })} className="flex items-center text-[#83764F] underline underline-offset-2 decoration-[#83764F]">{row.plot}<ArrowUpRight className="size-[16px]" /></button>,title:'Plot Number'},
       
     { id: 2, selector: "pin", title: "Pin" },
