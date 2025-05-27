@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Layout from '@/components/Layout'
-import buildingIcon from '../assets/icons/buildingIcon.png'
+import buildingIcon from '@/assets/icons/buildingIcon.png'
 import Header from '@/components/Header';
 import profileImage from '@/assets/profile.jpg';
 import DropDownComponent from '@/components/DropDownComponent';
@@ -303,14 +303,14 @@ const Summary = () => {
         </div>
         <div >
           {isCollapse && (
-            emailData.map((email, index) => (
-              <div className='flex gap-2 mt-5'>
+            emailData.map((email, index:number) => (
+              <div key={index} className='flex gap-2 mt-5'>
                 <div className='flex size-[40px] bg-[#E7D4D680] rounded-full items-center justify-center text-[#862634]'>
                   <span>{getFirstLetters(email.user)}</span>
                 </div>
-                <div className='border border-1 w-[95%] p-4 rounded-sm'>
+                <div className=' border-1 w-[95%] p-4 rounded-sm'>
 
-                  <div className='flex bg-[#862634] gap-2 text-white p-1 px-2 rounded-r-lg rounded-l-e-sm rounded-bl-lg w-[270px]'><img src={chatIcon} alt='logo' className='size-[20px]' />Email from:<Link to='#' className='underline'>Salman Hameed</Link></div>
+                  <div className='flex bg-redcolor gap-2 text-white p-1 px-2 rounded-r-lg rounded-l-e-sm rounded-bl-lg w-[270px]'><img src={chatIcon} alt='logo' className='size-[20px]' />Email from:<Link to='#' className='underline'>Salman Hameed</Link></div>
                   <ViewMoreText text={email.msg} />
                 </div>
 
@@ -387,8 +387,8 @@ const Applications = () => {
   return (
     <div className='p-4 bg-white shadow-sm rounded-sm'>
       <div className='flex justify-between'>
-        <DropDownComponent value={applicationType} setvalue={setApplicationType} data={applicationTypeArray} title={'application Type'} />
-        <DropDownComponent value={exportType} setvalue={setExportType} data={exportTypeArray} title={'Export'} />
+        <DropDownComponent value={applicationType} setValue={setApplicationType} data={applicationTypeArray} title={'application Type'} />
+        <DropDownComponent value={exportType} setValue={setExportType} data={exportTypeArray} title={'Export'} />
       </div>
       <div className='overflow-auto'>
         <CommonTable data={investorData} header={TableHeader} />
@@ -492,7 +492,7 @@ const AuditHistory = () => {
     <div className='p-4 shadow-sm rounded-lg'>
       <div className='flex justify-between'>
         <p className='text-[#862634]'>Audit History</p>
-        <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg border border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
+        <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
       </div>
 
       <div className='overflow-auto '>

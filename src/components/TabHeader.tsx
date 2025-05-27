@@ -1,20 +1,18 @@
 import React from 'react'
 
-const TabHeader = (props) => {
+interface TabHeaderProps{
+  data:{title:string;value:string|number}[];
+  tabArray:{id:number;name:string}[];
+  setActiveTab:React.Dispatch<React.SetStateAction<number>>;
+  activeTab:number;
+}
+const TabHeader:React.FC<TabHeaderProps> = (props) => {
     const {data,tabArray,setActiveTab,activeTab}=props;
   return (
-     <div className=' w-auto  shadow-sm rounded-[10px] pt-2 mb-5'>
-          {/* <div className='flex px-4  gap-2'>
-            <img src={buildingIcon} alt='logo' />
-            <span className='text-[#231F2099]'>item</span>
-          </div>
-          <div className='flex items-center gap-2 uppercase mt-5 px-4'>
-            <img src={profileImage} alt='img' className='size-[56px] rounded-full' />
-            <h4 className='text-[18px] font-[600]'>Sotota Contracting Telecom and Maintenance</h4>
-
-          </div> */}
+     <div className=' w-auto rounded-[10px] pt-2 mb-5 bg-white'>
+          
           <div className='m-5 mx-20 flex gap-10 justify-between'>
-            {data?.map((item, index) => (
+            {data.map((item, index) => (
               <div key={index}>
                 <p className='text-[14px] font-light text-[#231F2099] '>{item?.title}</p>
                 <p>{item?.value}</p>
@@ -27,7 +25,7 @@ const TabHeader = (props) => {
             <ul className="flex flex-wrap mt-2">
               {tabArray?.map((tab) => (
                 <li key={tab.id} onClick={() => setActiveTab(tab.id)}
-                  className={`inline-block p-3 mx-2  rounded-t-lg hover:text-[#862634] ${tab.id === activeTab && 'border-[#862634] text-[#862634] border-b-2'} hover:border-[#862634] dark:hover:text-[#862634] capitalize`} >
+                  className={`inline-block p-3 mx-2  rounded-t-lg hover:text-redcolor ${tab.id === activeTab && 'border-redcolor text-redcolor border-b-2'} hover:border-redcolor dark:hover:text-redcolor capitalize`} >
                   {tab.name}
                 </li>
               ))}

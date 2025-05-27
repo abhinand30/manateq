@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import {  ChevronRight,  } from "lucide-react";
 
 import {Sidebar,SidebarContent,SidebarFooter,SidebarGroup,SidebarGroupContent,
-  SidebarHeader,SidebarMenu,SidebarMenuButton,SidebarMenuItem,} from "@/components/ui/sidebar";
+  SidebarHeader,SidebarMenu,SidebarMenuButton,SidebarMenuItem,
+  SidebarTrigger,} from "@/components/ui/sidebar";
 import dashboardIcon from '../assets/icons/dashboard.svg';
 import plotIcon from '../assets/icons/plot.svg';
 import chatIcon from '../assets/icons/chat.svg';
@@ -60,8 +61,9 @@ const SidebarComponent = () => {
 
     <Sidebar collapsible="icon">
       <SidebarContent>
-        <SidebarHeader>
+        <SidebarHeader className="flex">
           <img src={logo} alt="logo" className="h-10" />
+          <SidebarTrigger/>
         </SidebarHeader>
         <SidebarGroup>
           {/* <SidebarGroupLabel>Application</SidebarGroupLabel> */}

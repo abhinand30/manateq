@@ -1,16 +1,13 @@
-
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 
 import CommonTable from '@/components/CommonTable';
 import DropDownComponent from '@/components/DropDownComponent';
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import searchIcon from '../assets/icons/search.svg';
-import exportIcon from '../assets/exportIcon.png';
-import detailIcon from '../assets/icons/detailIcon.png';
-import gridIcon from '../assets/icons/gridIcon.png';
+import searchIcon from '@/assets/icons/search.svg';
+import exportIcon from '@/assets/exportIcon.png';
+import detailIcon from '@/assets/icons/detailIcon.png';
+import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
 import { ClickableCell } from '@/components/ClickableCell';
 
@@ -229,7 +226,7 @@ const dummyData = [
 
 
 const AgreementsPage = () => {
-  const navigate=useNavigate();
+  
   const [grid, setGrid] = useState<boolean>(false);
   const [filters, setFilters] = useState({
     status: '',
@@ -269,7 +266,7 @@ const AgreementsPage = () => {
     <Layout>
       <Header />
 
-      <div className='h-10 w-[100%] flex justify-between px-4 mt-4'>
+      <div className='h-10  flex justify-between px-4 mt-4'>
         <div className='flex gap-5'>
           <button className='flex size-10 rounded-sm shadow-lg items-center justify-center'>
             <img src={searchIcon} className='size-6' />
@@ -315,7 +312,7 @@ const AgreementsPage = () => {
         </div>
 
       ) : (
-        <div className='overflow-x-scroll'>
+        <div className='p-5 overflow-x-scroll'>
           <CommonTable data={dummyData} header={TableHeader} />
         </div>
 

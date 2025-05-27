@@ -5,10 +5,10 @@ import CommonTable from '@/components/CommonTable';
 import DropDownComponent from '@/components/DropDownComponent';
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import searchIcon from '../assets/icons/search.svg';
-import exportIcon from '../assets/exportIcon.png';
-import detailIcon from '../assets/icons/detailIcon.png';
-import gridIcon from '../assets/icons/gridIcon.png';
+import searchIcon from '@/assets/icons/search.svg';
+import exportIcon from '@/assets/exportIcon.png';
+import detailIcon from '@/assets/icons/detailIcon.png';
+import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
 import { ClickableCell } from '@/components/ClickableCell';
 
@@ -76,7 +76,7 @@ const ServiceRequestsPage = () => {
   const handleGrid = () => {
     setGrid(!grid);
   }
-  const handleChange = (key, value) => {
+  const handleChange = (key:string, value:string) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
   return (
@@ -127,8 +127,8 @@ const ServiceRequestsPage = () => {
       {grid ? (
 
         <div className='grid grid-cols-3 gap-4'>
-          {dummyData.map((plot) => (
-            <CommonCard key={plot.id} icon={detailIcon} data={plot} />
+          {dummyData.map((plot,index) => (
+            <CommonCard key={index} icon={detailIcon} data={plot} />
           ))}
         </div>
 

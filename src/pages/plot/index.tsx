@@ -7,14 +7,12 @@ import CommonTable from '@/components/CommonTable';
 import DropDownComponent from '@/components/DropDownComponent';
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import searchIcon from '../assets/icons/search.svg';
-import exportIcon from '../assets/exportIcon.png';
-import detailIcon from '../assets/icons/detailIcon.png';
-import gridIcon from '../assets/icons/gridIcon.png';
+import searchIcon from '@/assets/icons/search.svg';
+import exportIcon from '@/assets/exportIcon.png';
+import detailIcon from '@/assets/icons/detailIcon.png';
+import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
 
-
-// 
 const statusArray = [
   { id: 1, name: 'All', value: 'all' },
   { id: 2, name: 'Allocated', value: 'allocated' },
@@ -155,7 +153,7 @@ const PlotsPage = () => {
         </div>
 
       ) : (
-        <div className='overflow-x-scroll'>
+        <div className='overflow-x-auto'>
           <CommonTable data={plotData} header={TableHeader} />
         </div>
 

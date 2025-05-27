@@ -16,61 +16,13 @@ import {
 
 import DropDownComponent from '@/components/DropDownComponent';
 import { ClickableCell } from '@/components/ClickableCell';
-import profileImage from '../assets/profile.jpg';
+import profileImage from '@/assets/profile.jpg';
 import pdfIcon from '@/assets/icons/pdfIcon.png';
 import downloadIcon from '@/assets/icons/downloadIcon.png';
 import visibleIcon from '@/assets/icons/visible.png';
 
-const PlotDetailsPage = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
-  const investorData = [
-    { id: 1, title: 'Reference Number', value: 272727 },
-    { id: 2, title: 'Status Reason', value: 0 },
-    { id: 3, title: 'Clearance Status', value: 0 },
-    { id: 4, title: 'Development Status', value: 63637 },
-    { id: 4, title: 'Size', value: 1200 },
-  ];
 
-  const tabArray = [
-    { id: 1, name: 'General' },
-    { id: 2, name: 'Applications' },
-    { id: 3, name: 'Plot Access Logs' },
-    { id: 4, name: 'Plot Attachments' },
-    { id: 5, name: 'audit history' },
-  ];
-  const renderComponent = () => {
-    switch (activeTab) {
-      case 1:
-        return < General />
-      case 2:
-        return <Applications />
-      case 3:
-        return <PlotAccess />
-      case 4:
-        return <PlotAttachments />
-      case 5:
-        return <AuditHistory />
-
-    }
-
-  }
-  return (
-
-    <Layout>
-      <Header />
-      <div className='p-5'>
-        <TabHeader data={investorData} tabArray={tabArray} activeTab={activeTab} setActiveTab={setActiveTab} />
-      </div>
-      {renderComponent()}
-
-    </Layout>
-  )
-}
-
-export default PlotDetailsPage;
-
-const General = () => {
-  const plotInformationData = {
+const plotInformationData = {
     investApplicationType: '', plotNumber: '', pin: 7838383, project: 'sjsdjsj@gamil.com', plotType: 'dhdj.com', plotConstruction: '', plotCompliance: 'dkkddjkjd',
     cluster: 'uyey', size: '', location_AR: '', location_EN: ''
   };
@@ -124,14 +76,142 @@ const General = () => {
       { title: 'Completion Certificate Obtained Date', name: 'certificateCompletionDate', },
   ]
   const completionHeader={buildingFileApplication:'',certificateCompletionDate:'2024-05-19'}
-  const sections = [
+
+
+ const plotAccessData = [
+    { id: 1, referenceNo: '737373', actionTaken: 'open Plot', loggedInUser: 'hsshsh', plot: 'ME-IZ-TK', actionDate: '2024-05-23' }
+  ]
+const investorData = [
+    {  title: 'Reference Number', value: 272727 },
+    {  title: 'Status Reason', value: 0 },
+    {  title: 'Clearance Status', value: 0 },
+    {  title: 'Development Status', value: 63637 },
+    {  title: 'Size', value: 1200 },
+  ];
+
+  const tabArray = [
+    { id: 1, name: 'General' },
+    { id: 2, name: 'Applications' },
+    { id: 3, name: 'Plot Access Logs' },
+    { id: 4, name: 'Plot Attachments' },
+    { id: 5, name: 'audit history' },
+  ];
+
+    const plotAllApplicationHeader = [
+    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 2, title: 'Location', selector: 'location' },
+    { id: 3, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
+    { id: 4, cell: (row: any) => ClickableCell(row, 'assignedbussinessAnalyst'), title: 'Assigned Bussiness Analyst' },
+    { id: 5, title: 'Application Status', selector: 'applicationStatus' },
+    { id: 6, title: 'External Status', selector: 'externalStatus' },
+    { id: 7, title: 'Created On', selector: 'createdOn' },
+    { id: 8, title: 'Submission Date', selector: 'submissionDate' },
+    { id: 9, title: 'Completion Date', selector: 'completionDate' },
+    { id: 10, cell: (row: any) => ClickableCell(row, 'plotNumber'), title: 'Plot Number' },
+    { id: 11, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: 'Current Agreement' },
+    { id: 12, title: 'Commencement Date', selector: 'commencementDate' },
+    { id: 13, title: 'End Date (Current)', selector: 'endDate' },
+  ];
+
+  const plotAllApplicationData = [
+    { id: 1, applicantID: 37737, location: '7hshh', owner: 'ajjsj', assignedbussinessAnalyst: 'yeye', applicationStatus: 'dhhdh', externalStatus: 'pending', createdOn: '2025-02-01', submissionDate: '2025-02-01', completionDate: '2025-02-01', plotNumber: '3636', currentAgreement: 'tet', commencementDate: '2025-02-01', endDate: '2025-02-01' }
+    , { id: 2, applicantID: 37737, location: '7hshh', owner: 'ajjsj', assignedbussinessAnalyst: 'yeye', applicationStatus: 'dhhdh', externalStatus: 'pending', createdOn: '2025-02-01', submissionDate: '2025-02-01', completionDate: '2025-02-01', plotNumber: '3636', currentAgreement: 'tet', commencementDate: '2025-02-01', endDate: '2025-02-01' }
+  ]
+
+
+  const plotRelatedApplicationHeader = [
+    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 2, title: 'Location', selector: 'location' },
+    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
+    { id: 4, title: 'Email (Applicant)', selector: 'email' },
+    { id: 5, title: 'Mobile', selector: 'mobile' },
+    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
+    { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
+    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
+    { id: 9, title: 'Application Status', selector: 'applicationStatus' },
+    { id: 10, title: 'External Status', selector: 'externalStatus' },
+    { id: 11, title: 'Created On', selector: 'createdOn' },
+  ];
+  const plotRelatedApplicationData = [
+    { id: 1, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
+    , { id: 2, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
+
+  ]
+  const plotCommercialApplicationHeader = [
+    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 2, title: 'Location', selector: 'location' },
+    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
+    { id: 4, title: 'Email (Applicant)', selector: 'email' },
+    { id: 5, title: 'Mobile', selector: 'mobile' },
+    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
+    { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
+    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
+    { id: 9, title: 'Application Status', selector: 'applicationStatus' },
+    { id: 10, title: 'External Status', selector: 'externalStatus' },
+    { id: 11, title: 'Created On', selector: 'createdOn' },
+  ];
+
+  const plotCommercialApplicationData = [
+    { id: 1, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
+    , { id: 2, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
+  ]
+ 
+    const plotExportTypeArray = [
+    { id: 1, name: 'EZ Applications', value: 'EZApplication' },
+    { id: 2, name: 'LP Applications', value: 'LPApplication' },
+    { id: 3, name: 'Commercial and Waterfront Applications', value: 'commercialAndWaterfrontApplications' },
+    { id: 4, name: 'Industrial Applications', value: 'industrial Applications' },
+    { id: 5, name: 'Ready Mix Applications', value: 'readyMixApplications' },
+    { id: 6, name: 'Warehouse Applications', value: 'warehouseApplications' },
+  ];
+
+const PlotDetailsPage = () => {
+  const [activeTab, setActiveTab] = useState<number>(1);
+  
+
+  //  {id:,cell:(row:any)=>ClickableCell(row,''),title:''},
+
+ 
+  const renderComponent = () => {
+    switch (activeTab) {
+      case 1:
+        return < General />
+      case 2:
+        return <Applications />
+      case 3:
+        return <PlotAccess />
+      case 4:
+        return <PlotAttachments />
+      case 5:
+        return <AuditHistory />
+
+    }
+
+  }
+  return (
+
+    <Layout>
+      <Header />
+      <div className='p-5'>
+        <TabHeader data={investorData} tabArray={tabArray} activeTab={activeTab} setActiveTab={setActiveTab} />
+      </div>
+      {renderComponent()}
+
+    </Layout>
+  )
+}
+
+export default PlotDetailsPage;
+
+const General = () => {
+    const sections = [
     { id: "item-1", title: "Plot Information", headers: plotInformationHeader, data: plotInformationData },
     { id: "item-2", title: "Clearance Details", headers: plotClearanceHeader, data: plotClearanceData },
     { id: "item-3", title: "Agreement and Land Use Details", headers: plotAgreementHeader, data: agreementData },
     { id: "item-4", title: "Building permit Details and Building File Applications", headers: buildingPermitArray, data: buildingPermitdata },
     { id: "item-5", title: "Completion Certificate", headers: completionCertificateHeader, data:completionHeader },
   ];
-
+ 
   const SectionAccordion = ({ id, title, headers, data }: { id: string; title: string; headers: [], data: any }) => (
     <AccordionItem value={id}>
       <AccordionTrigger className="p-4">{title}</AccordionTrigger>
@@ -168,8 +248,8 @@ const General = () => {
     </AccordionItem>
   );
   return (
-    <div className='border border-1 m-4 '>
-      <div className="border border-1 m-4 rounded-lg">
+    <div className='bg-white m-4 p-[32px] '>
+      <div className=" border-1 rounded-lg">
         <Accordion type="single" collapsible className="w-full">
           {sections.map((section) => (
             <SectionAccordion key={section.id} {...section} />
@@ -183,69 +263,12 @@ const General = () => {
 
 const Applications = () => {
 
-  const allApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
-    { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
-    { id: 4, cell: (row: any) => ClickableCell(row, 'assignedbussinessAnalyst'), title: 'Assigned Bussiness Analyst' },
-    { id: 5, title: 'Application Status', selector: 'applicationStatus' },
-    { id: 6, title: 'External Status', selector: 'externalStatus' },
-    { id: 7, title: 'Created On', selector: 'createdOn' },
-    { id: 8, title: 'Submission Date', selector: 'submissionDate' },
-    { id: 9, title: 'Completion Date', selector: 'completionDate' },
-    { id: 10, cell: (row: any) => ClickableCell(row, 'plotNumber'), title: 'Plot Number' },
-    { id: 11, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: 'Current Agreement' },
-    { id: 12, title: 'Commencement Date', selector: 'commencementDate' },
-    { id: 13, title: 'End Date (Current)', selector: 'endDate' },
+    const sections = [
+    { id: "item-1", title: "All Applications", headers: plotAllApplicationHeader, data: plotAllApplicationData },
+    { id: "item-2", title: "Related Commercial Applications", headers: plotRelatedApplicationHeader, data: plotRelatedApplicationData },
+    { id: "item-3", title: "Commercial and waterfront Applications", headers: plotCommercialApplicationHeader, data: plotCommercialApplicationData },
   ];
 
-  const allApplicationData = [
-    { id: 1, applicantID: 37737, location: '7hshh', owner: 'ajjsj', assignedbussinessAnalyst: 'yeye', applicationStatus: 'dhhdh', externalStatus: 'pending', createdOn: '2025-02-01', submissionDate: '2025-02-01', completionDate: '2025-02-01', plotNumber: '3636', currentAgreement: 'tet', commencementDate: '2025-02-01', endDate: '2025-02-01' }
-    , { id: 2, applicantID: 37737, location: '7hshh', owner: 'ajjsj', assignedbussinessAnalyst: 'yeye', applicationStatus: 'dhhdh', externalStatus: 'pending', createdOn: '2025-02-01', submissionDate: '2025-02-01', completionDate: '2025-02-01', plotNumber: '3636', currentAgreement: 'tet', commencementDate: '2025-02-01', endDate: '2025-02-01' }
-  ]
-
-
-  const relatedApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
-    { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
-    { id: 4, title: 'Email (Applicant)', selector: 'email' },
-    { id: 5, title: 'Mobile', selector: 'mobile' },
-    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
-    { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
-    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
-    { id: 9, title: 'Application Status', selector: 'applicationStatus' },
-    { id: 10, title: 'External Status', selector: 'externalStatus' },
-    { id: 11, title: 'Created On', selector: 'createdOn' },
-  ];
-  const relatedApplicationData = [
-    { id: 1, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
-    , { id: 2, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
-
-  ]
-  const commercialApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
-    { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
-    { id: 4, title: 'Email (Applicant)', selector: 'email' },
-    { id: 5, title: 'Mobile', selector: 'mobile' },
-    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
-    { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
-    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
-    { id: 9, title: 'Application Status', selector: 'applicationStatus' },
-    { id: 10, title: 'External Status', selector: 'externalStatus' },
-    { id: 11, title: 'Created On', selector: 'createdOn' },
-  ];
-
-  const commercialApplicationData = [
-    { id: 1, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
-    , { id: 2, applicantID: 37737, location: '7hshh', applicant: 'ajjsj', email: 'ajjsi@gmail.com', mobile: 8373737373, investor: 'sossco', CRNumber: 377373, owner: 'abhshsh', applicationStatus: 'pending', externalStatus: 'progress', createdOn: '2025-02-01' }
-  ]
-  const sections = [
-    { id: "item-1", title: "All Applications", headers: allApplicationHeader, data: allApplicationData },
-    { id: "item-2", title: "Related Commercial Applications", headers: relatedApplicationHeader, data: relatedApplicationData },
-    { id: "item-3", title: "Commercial and waterfront Applications", headers: commercialApplicationHeader, data: commercialApplicationData },
-  ];
   const SectionAccordion = ({ id, title, headers, data }: { id: string; title: string; headers: [], data: any }) => (
     <AccordionItem value={id}>
       <AccordionTrigger className="p-4">{title}</AccordionTrigger>
@@ -258,8 +281,8 @@ const Applications = () => {
     </AccordionItem>
   );
   return (
-    <div className='border border-1 m-4 '>
-      <div className="border border-1 m-4 rounded-lg">
+    <div className=' border-1 m-4 '>
+      <div className=" border-1 m-4 rounded-lg">
         <Accordion type="single" collapsible className="w-full">
           {sections.map((section) => (
             <SectionAccordion key={section.id} {...section} />
@@ -274,17 +297,7 @@ const Applications = () => {
 const PlotAccess = () => {
   const [exportType, setExportType] = useState<string>('');
   const navigate = useNavigate();
-  const exportTypeArray = [
-    { id: 1, name: 'EZ Applications', value: 'EZApplication' },
-    { id: 2, name: 'LP Applications', value: 'LPApplication' },
-    { id: 3, name: 'Commercial and Waterfront Applications', value: 'commercialAndWaterfrontApplications' },
-    { id: 4, name: 'Industrial Applications', value: 'industrial Applications' },
-    { id: 5, name: 'Ready Mix Applications', value: 'readyMixApplications' },
-    { id: 6, name: 'Warehouse Applications', value: 'warehouseApplications' },
-  ];
-
-  //  {id:,cell:(row:any)=>ClickableCell(row,''),title:''},
-  const plotAccessHeader = [
+    const plotAccessHeader = [
     { id: 1, cell: (row: any) => ClickableCell(row, 'referenceNo'), title: 'Reference Number' },
     { id: 2, title: 'Action Taken', selector: 'actionTaken' },
     {
@@ -295,16 +308,14 @@ const PlotAccess = () => {
     { id: 5, title: 'Action Date', selector: 'actionDate' },
   ]
 
-  const plotAccessData = [
-    { id: 1, referenceNo: '737373', actionTaken: 'open Plot', loggedInUser: 'hsshsh', plot: 'ME-IZ-TK', actionDate: '2024-05-23' }
-  ]
+
   return (
     <div className='m-4 p-4 shadow-sm'>
       <div className='flex justify-between'>
         <h4>Plot Access Log</h4>
         <div className='flex gap-3'>
-          <DropDownComponent value={exportType} setvalue={setExportType} data={exportTypeArray} title={'Export'} />
-          <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg border border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
+          <DropDownComponent value={exportType} setValue={setExportType} data={plotExportTypeArray} title={'Export'} />
+          <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
         </div>
       </div>
 
@@ -326,7 +337,7 @@ const PlotAttachments = () => {
     { id: 3, title: 'Created On', selector: 'createdOn' },
     { id: 4, title: 'Last Modified', selector: 'lastModified' },
     {
-      id: 2, cell: (row: any) => <div className='flex gap-2'>
+      id: 2, cell: () => <div className='flex gap-2'>
         <button className='flex size-[30px] border-1 items-center justify-center rounded-sm'><img src={visibleIcon} alt='logo' /></button>
         <button className='flex size-[30px] border-1 items-center justify-center rounded-sm'><img src={downloadIcon} alt='icon' /></button>
       </div>, title: 'Type'
@@ -363,8 +374,8 @@ const AuditHistory = () => {
   return (
     <div className='p-4 shadow-sm rounded-lg'>
       <div className='flex justify-between'>
-        <p className='text-[#862634]'>Audit History</p>
-        <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg border border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
+        <p className='text-redcolor'>Audit History</p>
+        <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><img src={refreshIcon} alt="re" />Refresh</button>
       </div>
 
       <div className='overflow-auto '>

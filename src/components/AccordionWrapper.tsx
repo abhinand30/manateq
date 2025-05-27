@@ -6,7 +6,7 @@ const AccordionWrapper = ({ id, title, content, openAccordion, toggleAccordion }
             <h2 id={`accordion-heading-${id}`}>
                 <button
                     className={`flex items-center justify-between w-full p-5 font-medium 
-                        ${openAccordion === id ? 'text-[#862634]' : 'text-gray-500'} dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3`}
+                        ${openAccordion === id ? 'text-redcolor' : 'text-gray-500'} dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3`}
                     onClick={() => toggleAccordion(id)}
                     aria-expanded={openAccordion === id}
                     aria-controls={`accordion-body-${id}`}

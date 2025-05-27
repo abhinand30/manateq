@@ -4,11 +4,23 @@ import backIcon from '@/assets/icons/backIcon.png';
 import forwardIcon from '@/assets/icons/forwardIcon.png'
 import { Card } from '@/components/ui/card';
 
-function CarouselComponent(props) {
-  const { data } = props
 
+
+
+interface CarouselProps {
+ data:{ RequestType: string;
+  agreement:string;
+  contactPerson:string;
+  date:string;
+  id:number;
+  investor:string;
+  plot:string;
+  status:string;}[]
+}
+const CarouselComponent= ({data}:CarouselProps) => {
+  
   return (
-    <Carousel className="max-w-[668px] w-auto h-[476px] bg-white shadow-sm p-10 rounded-[24px]">
+    <Carousel className="max-w-[700px] w-auto h-[476px] bg-white  p-10 rounded-[24px]">
       <div className="flex justify-between items-center mb-4">
         <div>
           <h3 className="text-3xl">Recent Service Requests</h3>
@@ -30,14 +42,17 @@ function CarouselComponent(props) {
         {data.map((recentRequest, index: number) => (
           <CarouselItem key={index} className="flex justify-center">
             <Card className="w-full flex flex-col h-[250px] justify-center px-4">
-              <div className="flex gap-5">
-                <div className="bg-black size-10 flex items-center justify-center p-1 rounded-sm">
-                  <img src={flashIcon} />
+              <div className="flex gap-5 justify-between items-center">
+                <div className='flex gap-5'>
+                  <div className="bg-black size-10 flex items-center justify-center p-1 rounded-sm">
+                    <img src={flashIcon} />
+                  </div>
+                  <div>
+                    <p>{recentRequest.id}</p>
+                    <p>Created On: {recentRequest.date}</p>
+                  </div>
                 </div>
-                <div>
-                  <p>{recentRequest.id}</p>
-                  <p>Created On: {recentRequest.date}</p>
-                </div>
+
                 <div className="flex items-center bg-[#31AD801A] h-8 px-2 rounded-[5px] text-[#31AD80]">
                   {recentRequest.status}
                 </div>

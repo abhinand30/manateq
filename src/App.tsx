@@ -2,14 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import DashboardPage from "./pages/dashBoard"
 import NotFound from "./pages/NotFound"
-import PlotsPage from "./pages/PlotsPage"
-import AgreementsPage from "./pages/AgreementsPage"
-import InvestorsPage from "./pages/InvestorsPage"
-import ServiceRequestsPage from "./pages/ServiceRequestsPage"
-import InvestorDetailPage from './pages/InvestorDetailPage'
-import PlotDetailsPage from "./pages/PlotDetailsPage"
-import ServiceRequestDetailsPage from "./pages/ServiceRequestDetailsPage"
-import AgreementDetailsPage from "./pages/AgreementDetailsPage"
+import PlotsPage from "./pages/plot"
+import AgreementsPage from "./pages/agreement"
+import InvestorsPage from "./pages/investors"
+import ServiceRequestsPage from "./pages/serviceRequest"
+import InvestorDetailPage from './pages/investors/InvestorDetailPage'
+import PlotDetailsPage from "./pages/plot/PlotDetailsPage"
+import ServiceRequestDetailsPage from "./pages/serviceRequest/ServiceRequestDetailsPage"
+import AgreementDetailsPage from "./pages/agreement/AgreementDetailsPage"
 
 function App() {
   const router = createBrowserRouter([

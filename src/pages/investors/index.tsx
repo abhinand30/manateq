@@ -7,7 +7,7 @@ import DropDownComponent from '@/components/DropDownComponent';
 import CommonTable from '@/components/CommonTable';
 import Layout from '@/components/Layout';
 import CommonCard from '@/components/CommonCard';
-import exportIcon from '../assets/exportIcon.png'
+import exportIcon from '@/assets/exportIcon.png'
 import detailIcon from '@/assets/icons/detailIcon.png';
 import searchIcon from '@/assets/icons/search.svg';
 import gridIcon from '@/assets/icons/gridIcon.png';
@@ -37,9 +37,11 @@ const statusArray = [
 const sortArray = [
   { id: 1, name: 'Newest to Oldest', value: 'old' },
   { id: 2, name: 'Oldest to Newest', value: 'new' },
-]
+];
+
+
 const InvestorsPage = () => {
-  const [status, setStatus] = useState<String>('');
+  const [status, setStatus] = useState<string>('');
   const [sort, setSort] = useState('');
   const [grid, setGrid] = useState<boolean>(false);
 
@@ -69,7 +71,7 @@ const InvestorsPage = () => {
             <button className='flex size-10 rounded-sm shadow-lg items-center justify-center'>
               <img src={searchIcon} className='size-6' />
             </button>
-            <DropDownComponent value={status} setvalue={setStatus} data={statusArray} title={'Status'} />
+            <DropDownComponent value={status} setValue={setStatus} data={statusArray} title={'Status'} />
             <DropDownComponent value={sort} setValue={setSort} data={sortArray} title={'Sort By'} />
           </div>
 

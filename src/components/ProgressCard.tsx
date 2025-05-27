@@ -7,16 +7,16 @@ const ProgressCard = (props) => {
     
 
     return (
-        <div className='shadow-sm p-4 w-auto '>
+        <div className=' p-4 w-auto max-w-[424px] rounded-[16px] bg-white'>
             <div className='flex justify-between'>
-                <div>
+                <div className='gap-[4px] mb-5'>
                     <p className='text-[20px]'>Agreement Business Process</p>
                     <p className='text-[14px] text-[#918F90]'>Active for {data.duration} days</p>
                 </div>
 
                 <button>Close</button>
             </div>
-            <div className='border-1 p-4'>
+            <div className='border-1 p-4 rounded-[16px]'>
                 <h3 className='uppercase text-[#83764F]'>Agreement stages</h3>
                 <div>
                     {data.stages.map((stage, index:number) => (

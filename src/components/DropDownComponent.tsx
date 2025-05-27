@@ -1,13 +1,20 @@
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react';
+
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
+import { returnSelectTitle } from '@/lib/utils';
 
-
-const DropDownComponent = (props) => {
-  const { value, setValue, data, title } = props
+interface dropdownProps {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  data: { name: string, value: string }[],
+  title: string;
+}
+const DropDownComponent: React.FC<dropdownProps> = (props) => {
+  const { value, setValue, data, title } = props;
   return (
     <DropdownMenu >
-      <DropdownMenuTrigger className="flex h-10 shadow-sm p-2 px-5 rounded-sm  items-center text-[#918F90]">
-        {value ? value : title} <ChevronDown size={20} className="text-gray-500" />
+      <DropdownMenuTrigger className="flex bg-white h-10  p-2 px-5 rounded-sm  items-center text-[#918F90]">
+        {value ? returnSelectTitle(data, value) : title} <ChevronDown size={20} className="text-gray-500" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-56">
