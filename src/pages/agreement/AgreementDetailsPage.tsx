@@ -281,21 +281,12 @@ const OperationalMilestone = () => {
 
 const PaymentMilestone = () => {
     const [exportType, setExportType] = useState<string>('');
-    const [status, setStatus] = useState('dueThisMonth');
+    const [status, setStatus] = useState<string>('allPaymentMilestones');
 
-
-
-    return (
-        <div className='bg-white rounded-[16px] p-4 gap-[10px] '>
-            <div className='flex justify-between  items-center py-2'>
-                <DropDownComponent value={status} setValue={setStatus} data={agreementStatusArray} title={'Status'} />
-                <DropDownComponent value={exportType} setValue={setExportType} data={exportTypeArray} title={'Export'} />
-            </div>
-            {(() => {
-                switch (status) {
+    const renderTable=()=>{
+         switch (status) {
                     case 'allPaymentMilestones':
                         return (<CommonTable header={agreementAllTableHeader} data={agreementAllTableData} />)
-
                     case 'overduePaymentMilestone':
                         return (<CommonTable header={agreementOverDueHeader} data={agreementOverDuePaymentData} />)
 
@@ -312,7 +303,15 @@ const PaymentMilestone = () => {
                     default:
                         return null;
                 }
-            })()}
+    }
+   
+    return (
+        <div className='bg-white rounded-[16px] p-4 gap-[10px] '>
+            <div className='flex justify-between  items-center py-2'>
+                <DropDownComponent value={status} setValue={setStatus} data={agreementStatusArray} title={'Status'} />
+                <DropDownComponent value={exportType} setValue={setExportType} data={exportTypeArray} title={'Export'} />
+            </div>
+           {renderTable()}
         </div>
     )
 }

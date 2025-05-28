@@ -11,6 +11,9 @@ import detailIcon from '@/assets/icons/detailIcon.png';
 import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
 import { ClickableCell } from '@/components/ClickableCell';
+import SubHeader from '@/components/SubHeader';
+import { returnSelectTitle } from '@/lib/utils';
+import { agreementExpiryData, allServiceRequestData, investorBlackListData, investorBlockData, landSwapData, landTransferData, plotMergeData, plotSizeChangeData } from '@/data/data';
 
 
 
@@ -19,35 +22,111 @@ const statusArray = [
   { id: 2, name: 'In Progress', value: 'inProgress' },
   { id: 3, name: 'Completed', value: 'completed' },
   { id: 4, name: 'Cancelled', value: 'cancelled' },
-   { id:5, name: 'Rejected', value: 'rejected' }
+  { id: 5, name: 'Rejected', value: 'rejected' }
 ]
-const applicationTypeArray = [
-  { id: 1, name: 'Logistics', value: 'logistics' },
-  { id: 2, name: 'Economic Zone', value: 'economicZone' },
-  { id: 3, name: 'All', value: 'all' },
-  { id: 4, name: 'Commercial', value: 'commercial' },
-  { id: 5, name: 'Industrial', value: 'industrial' },
-  { id: 6, name: 'Utility', value: 'utility' },
-  { id: 7, name: 'Health', value: 'health' },
-  { id: 8, name: 'Not Available', value: 'notAvailable' },
-  { id: 9, name: 'Open Space', value: 'openSpace' },
-  { id: 10, name: 'Service', value: 'service' },
-  { id: 11, name: 'Water Front', value: 'waterFront' },
-];
-const sortByArray=[
+const sortByArray = [
   { id: 1, value: 'newestToOldest', name: 'Newest to Oldest' },
   { id: 2, value: 'oldestToNewest', name: 'Oldest to Newest' },
 ]
-const filterByArray=[
+const filterByArray = [
   { id: 1, value: 'activeRequest', name: 'Active Request' },
   { id: 2, value: 'inactiveRequest', name: 'Inactive Requaest' },
 ]
 
-const dummyData = [
-  { referenceID: 'REF-001', applicant: 'John Doe', contactPerson: 'Jane Smith', investor: 'Acme Corp', agreement: 'Lease', plot: 'ME-IZ-LE-001', requestType: 'New Application', requestStatus: 'Pending', serviceStatus: 'Active', owner: 'XYZ Properties', createdOn: '22/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' },
-  { referenceID: 'REF-002', applicant: 'Michael Scott', contactPerson: 'Dwight Schrute', investor: 'Dunder Mifflin', agreement: 'Purchase', plot: 'ME-IZ-LE-002', requestType: 'Modification', requestStatus: 'Approved', serviceStatus: 'Operational', owner: 'ABC Realty', createdOn: '20/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' },
-  { referenceID: 'REF-003', applicant: 'Sarah Connor', contactPerson: 'Kyle Reese', investor: 'Cyberdyne Systems', agreement: 'Rent', plot: 'ME-IZ-LE-003', requestType: 'Renewal', requestStatus: 'Rejected', serviceStatus: 'Inactive', owner: 'DEF Holdings', createdOn: '18/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' }
+const investorBlackLIstHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, selector: "type", title: "Type" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'requestingDepartment'), title: 'Requesting Department' },
+  { id: 3, selector: "createdOn", title: "createdOn" },
+]
+
+const investorBlockHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: "Current Agreement" },
+  { id: 5, selector: "createdOn", title: "createdOn" },
+]
+
+const serviceRequestsArray = [
+  { id: 0, name: 'All Service Requests', value: 'allServiceRequest' },
+  { id: 1, name: 'Investor Blacklist', value: 'investorBlacklist' },
+  { id: 2, name: 'Block/Unblock Investor (Finance)', value: 'Block/UnblockInvestor' },
+  { id: 3, name: 'Steps In Rights Block Plot', value: 'blockPlot' },
+  { id: 4, name: 'Steps In Rights Unblock Plot', value: 'unblockPlot' },
+  { id: 5, name: 'Agreement Expiry and Renewal', value: 'agreementExpiry&Renewal' },
+  { id: 6, name: 'Termination', value: 'termination' },
+  { id: 7, name: 'Land Swap', value: 'landSwap' },
+  { id: 8, name: 'Plot Merge', value: 'plotMerge' },
+  { id: 9, name: 'Plot Size Change', value: 'plotSizeChange' },
+  { id: 10, name: 'Land Transfer', value: 'landTransfer' },
 ];
+
+
+
+
+const agreementExpiryHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'Agreement'), title: "Agreement" },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'industrialApplications'), title: "Industrial Applications" },
+  { id: 4, selector: "createdOn", title: "Agreement Renewal Decision" },
+  { id: 5, selector: "Plot", title: "plot" },
+  { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+]
+const terminationHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, selector: "createdOn", title: "Created On" },
+]
+const terminationData = [
+  { "refId": "36724", "createdOn": "25/11/2024 - 12:27" },
+  { "refId": "36724", "createdOn": "25/11/2024 - 12:27" },
+  { "refId": "36724", "createdOn": "25/11/2024 - 12:27" },
+  { "refId": "36724", "createdOn": "25/11/2024 - 12:27" },
+  { "refId": "36724", "createdOn": "25/11/2024 - 12:27" }
+]
+const landSwapHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: "Current Agreement" },
+  { id: 5, cell: (row: any) => ClickableCell(row, 'newAgreement'), title: "New Agreement" },
+  { id: 6, selector: "createdOn", title: "Created On" },
+];
+
+
+
+const plotMergeHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'plot1'), title: "Plot 1" },
+  { id: 5, cell: (row: any) => ClickableCell(row, 'plot2'), title: "Plot 2" },
+  { id: 6, selector: "createdOn", title: "Created On" },
+];
+const plotSizeChangeHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
+  { id: 5, selector: "createdOn", title: "Created On" },
+];
+
+const landTransferHeader = [
+  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: "Reference ID", },
+  { id: 2, cell: (row: any) => ClickableCell(row, 'applicant'), title: "Applicant" },
+  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 5, cell: (row: any) => ClickableCell(row, 'Agreement'), title: "Agreement" },
+  { id: 6, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
+  { id: 7, cell: (row: any) => ClickableCell(row, 'transferToInvestor'), title: "Transfer to Investor" },
+  { id: 8, cell: (row: any) => ClickableCell(row, 'newContactPerson'), title: "New Contact Person" },
+  { id: 9, selector: "requestStatus", title: "Request Status" },
+  { id: 10, selector: "statusReason", title: "Status Reason" },
+];
+
+
 
 const ServiceRequestsPage = () => {
   const navigate = useNavigate();
@@ -56,89 +135,140 @@ const ServiceRequestsPage = () => {
   const [filters, setFilters] = useState({
     status: '',
     filter: '',
-    sort:'' 
+    sort: '',
+    serviceRequestType: 'investorBlacklist'
   });
-
-
-  const TableHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "Reference ID", },
+ 
+  const allServiceRequestHeader = [
+    { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "refId", },
     { id: 2, cell: (row: any) => ClickableCell(row, 'applicant'), title: "Applicant" },
     { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-    { id: 4, cell: (row: any) => ClickableCell(row, 'investor'), title: "Investor", },
+    { id: 4, cell: (row: any) => ClickableCell(row, 'investor'), title: "investor", },
     { id: 5, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
     { id: 6, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
     { id: 7, cell: (row: any) => ClickableCell(row, 'requestType'), title: "Request Type" },
     { id: 8, selector: "requestStatus", title: "Request Status" },
     { id: 9, selector: "serviceStatus", title: "Service Status" },
-    { id: 10, cell: (row: any) => <button onClick={() => navigate(`${row?.owner}`, { state: { data: row } })} className="flex  gap-2 items-center "><img src={row?.ownerImage} alt='img' className="size-[30px] rounded-full" />{row.owner}</button>, title: 'Onwer' },
+    { id: 10, cell: (row: any) => <button onClick={() => navigate(`${row?.owner}`, { state: { data: row } })} className="flex  gap-1 items-center "><img src={row?.ownerImage} alt='img' className="profile-container" />{row.owner}</button>, title: 'Onwer' },
     { id: 11, selector: "createdOn", title: "Created On" },
   ];
+
   const handleGrid = () => {
     setGrid(!grid);
   }
-  const handleChange = (key:string, value:string) => {
+  const handleChange = (key: string, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
+
+  const renderTable = () => {
+    switch (filters.serviceRequestType) {
+      case 'allServiceRequest':
+        return (<CommonTable header={allServiceRequestHeader} data={allServiceRequestData} />)
+
+      case 'investorBlacklist':
+        return (<CommonTable header={investorBlackLIstHeader} data={investorBlackListData} />)
+
+      case 'Block/UnblockInvestor':
+        return (<CommonTable header={investorBlockHeader} data={investorBlockData} />)
+
+      case 'blockPlot':
+        return (<CommonTable header={investorBlockHeader} data={investorBlockData} />)
+
+      case 'unblockPlot':
+        return (<CommonTable header={investorBlockHeader} data={investorBlockData} />)
+
+      case 'agreementExpiry&Renewal':
+        return (<CommonTable header={agreementExpiryHeader} data={agreementExpiryData} />)
+
+      case 'termination':
+        return <CommonTable header={terminationHeader} data={terminationData} />
+
+      case 'landSwap':
+        return (<CommonTable header={landSwapHeader} data={landSwapData} />)
+
+      case 'plotMerge':
+        return (<CommonTable header={plotMergeHeader} data={plotMergeData} />)
+
+      case 'plotSizeChange':
+        return (<CommonTable header={plotSizeChangeHeader} data={plotSizeChangeData} />)
+
+      case 'landTransfer':
+        return (<CommonTable header={landTransferHeader} data={landTransferData} />)
+      default:
+        return null;
+    }
+  }
+
   return (
     <Layout>
       <Header />
-
-      <div className='h-10 w-[100%] flex justify-between px-4 mt-4'>
+      <SubHeader />
+      <div className='p-5'>
         <div className='flex gap-5'>
-          <button className='flex size-10 rounded-sm shadow-lg items-center justify-center'>
-            <img src={searchIcon} className='size-6' />
-          </button>
-
+          <p className='text-[28px]'>{returnSelectTitle(serviceRequestsArray, filters.serviceRequestType)}</p>
           <DropDownComponent
-            value={filters.status}
-            setValue={(value: any) => handleChange('status', value)}
-            data={statusArray}
-            title="Status"
+            value={filters.serviceRequestType}
+            setValue={(value: any) => handleChange('serviceRequestType', value)}
+            data={serviceRequestsArray}
+            notShow={true}
           />
+        </div>
+
+        <div className='h-10 w-[100%] flex justify-between  mt-4'>
+
+          <div className='flex gap-5'>
+            <button className='button-container size-10'>
+              <img src={searchIcon} className='size-6' />
+            </button>
+
             <DropDownComponent
-            value={filters.filter}
-            setValue={(value: any) => handleChange('filter', value)}
-            data={filterByArray}
-            title="Filter By"
-          />
-          <DropDownComponent
-            value={filters.sort}
-            setValue={(value: any) => handleChange('sort', value)}
-            data={sortByArray}
-            title="Sort By"
-          />
+              value={filters.status}
+              setValue={(value: any) => handleChange('status', value)}
+              data={statusArray}
+              title="Status"
+            />
+            <DropDownComponent
+              value={filters.filter}
+              setValue={(value: any) => handleChange('filter', value)}
+              data={filterByArray}
+              title="Filter By"
+            />
+            <DropDownComponent
+              value={filters.sort}
+              setValue={(value: any) => handleChange('sort', value)}
+              data={sortByArray}
+              title="Sort By"
+            />
+          </div>
 
-        
+
+          <div className='flex gap-5'>
+            <button className='button-container h-10 p-4'>
+              <img src={exportIcon} alt='export' className='size-5' />
+              export
+            </button>
+            <button onClick={handleGrid} className='button-container h-10 p-4'>
+              <img src={gridIcon} alt='icon' className='size-5' />
+              {grid ? 'Grid View' : 'List View'}
+            </button>
+          </div>
+
         </div>
+        {grid ? (
 
+          <div className='grid grid-cols-3 gap-4'>
+            {allServiceRequestData.map((plot, index) => (
+              <CommonCard key={index} icon={detailIcon} data={plot} />
+            ))}
+          </div>
 
-        <div className='flex gap-5'>
-          <button className='flex p-2 gap-2 shadow-sm rounded-lg h-10 items-center'>
-            <img src={exportIcon} alt='export' className='size-5' />
-            export
-          </button>
-          <button onClick={handleGrid} className='flex p-2 gap-2 shadow-sm rounded-lg h-10 items-center'>
-            <img src={gridIcon} alt='icon' className='size-5' />
-            {grid ? 'Grid View' : 'List View'}
-          </button>
-        </div>
+        ) : (
+          <div className='overflow-scroll'>
+            {renderTable()}
+          </div>
 
+        )}
       </div>
-      {grid ? (
-
-        <div className='grid grid-cols-3 gap-4'>
-          {dummyData.map((plot,index) => (
-            <CommonCard key={index} icon={detailIcon} data={plot} />
-          ))}
-        </div>
-
-      ) : (
-        <div className='overflow-x-hidden'>
-          <CommonTable data={dummyData} header={TableHeader} />
-        </div>
-
-      )}
-
     </Layout>
   )
 }

@@ -475,6 +475,472 @@ export const agreementAllTableHeader = [
  export const agreementStatusHeader = [
         { id: 1, title: 'Request Status', name: 'requestStatus',isLink:true },
         { id: 2, title: 'Decision', name: 'decision' },
-        { id: 2, title: 'Status', name: 'status' },
+        { id: 3, title: 'Status', name: 'status' },
     ];
+
+
+export const investorBlackListData = [
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Unblock",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Unblock",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Unblock",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Block",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco Wll",
+      "type": "Unblock",
+      "requestingDepartment": "manateq-crm-sb",
+      "createdOn": "25/11/2024 - 12:27"
+    }
+  ];
+
+export const allServiceRequestData = [
+  { referenceID: 'REF-001', applicant: 'John Doe', contactPerson: 'Jane Smith', investor: 'Acme Corp', agreement: 'Lease', plot: 'ME-IZ-LE-001', requestType: 'New Application', requestStatus: 'Pending', serviceStatus: 'Active', owner: 'XYZ Properties', createdOn: '22/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' },
+  { referenceID: 'REF-002', applicant: 'Michael Scott', contactPerson: 'Dwight Schrute', investor: 'Dunder Mifflin', agreement: 'Purchase', plot: 'ME-IZ-LE-002', requestType: 'Modification', requestStatus: 'Approved', serviceStatus: 'Operational', owner: 'ABC Realty', createdOn: '20/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' },
+  { referenceID: 'REF-003', applicant: 'Sarah Connor', contactPerson: 'Kyle Reese', investor: 'Cyberdyne Systems', agreement: 'Rent', plot: 'ME-IZ-LE-003', requestType: 'Renewal', requestStatus: 'Rejected', serviceStatus: 'Inactive', owner: 'DEF Holdings', createdOn: '18/05/2025', ownerImage: 'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?cs=srgb&dl=pexels-sulimansallehi-1704488.jpg&fm=jpg' }
+];
+
+export const investorBlockData = [
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "CreatedOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "Created On": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contact Person": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "Created On": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "Contact Person": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "Created On": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "Created On": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    }
+  ];
+export const plotSizeChangeData = [
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contctPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27",
+      
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "plot": 'AG-100-6677',
+      "createdOn": "25/11/2024 - 12:27"
+    }
+  ];
+export const landTransferData=[
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+      "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+      "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+        "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    },
+    {
+      "refId": "36724",
+      "applicant":"Aftab Khan",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot": "Ag-LP-574-000738238",
+      "transferToInvestor": "Ag-LP-574-000738238",
+       "newContactPerson": "Aftab Khan",
+      "createdOn": "25/11/2024 - 12:27",
+       "requestStatus": "Approved",
+      "Agreement":"AGP-GP124-12",
+      "statusReason": "Approved"
+    }
+  ];
+  export const plotMergeData = [
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "plot1": 'AG-100-6677',
+      "plot2": 'AG-100-667',
+      "createdOn": "25/11/2024 - 12:27"
+    }
+  ];
+
+   export const landSwapData = [
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contact Person": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "Contact Person": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "contactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    },
+    {
+      "refId": "36724",
+      "investor": "Sosco WIL",
+      "ContactPerson": "Aftab Khan",
+      "currentAgreement": "Ag-LP-574-000738238",
+      "newAgreement": "Ag-LP-574-000738238",
+      "createdOn": "25/11/2024 - 12:27"
+    }
+  ];
+  export const agreementExpiryData = [
+    {
+      "refId": "36724",
+      "Agreement": "Ag-LP-574-000738238",
+      "industrialApplications": "LOGPRKAPP00900364",
+      "agreementRenewalDecision": "Not Renewed",
+      "Plot": "Sosco Wll",
+      "investor": "Aftab Khan",
+      "contactPerson": "Lama Yamout"
+    },
+    {
+      "refId": "36724",
+      "Agreement": "Ag-LP-574-000738238",
+      "industrialApplications": "LOGPRKAPP00900364",
+      "agreementRenewalDecision": "Not Renewed",
+      "Plot": "Sosco Wll",
+      "investor": "Aftab Khan",
+      "contactPerson": "Lama Yamout"
+    },
+    {
+      "refId": "36724",
+      "Agreement": "Ag-LP-574-000738238",
+      "industrialApplications": "LOGPRKAPP00900364",
+      "agreementRenewalDecision": "Not Renewed",
+      "Plot": "Sosco Wll",
+      "investor": "Aftab Khan",
+      "contactPerson": "Lama Yamout"
+    }
+  ]
   // 

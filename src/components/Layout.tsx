@@ -1,5 +1,5 @@
 import SidebarComponent from "@/components/SidebarComponent";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import type { ReactNode } from "react";
 
 interface props{
@@ -8,9 +8,9 @@ interface props{
 const Layout = ({ children }:props) => {
   return (
     <SidebarProvider>
-      <div className="flex">
+      <div className="flex w-full">
         <SidebarComponent />
-        <main className=" bg-[#F8F8F8]">
+        <main className="w-full overflow-hidden bg-[#F8F8F8]">
           {/* <SidebarTrigger /> */}
           {children} 
         </main>

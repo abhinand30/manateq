@@ -4,8 +4,6 @@ import { Check } from 'lucide-react'
 const ProgressCard = (props) => {
     const {data}=props;
 
-    
-
     return (
         <div className=' p-4 w-auto max-w-[424px] rounded-[16px] bg-white'>
             <div className='flex justify-between'>

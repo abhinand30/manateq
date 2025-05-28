@@ -124,6 +124,13 @@
   }
 }
 
+.button-container {
+  @apply flex rounded-lg  items-center justify-center;
+}
+.profile-container{
+   @apply h-[30px] w-[30px] rounded-full;
+}
+
 @layer base {
   :root {
     --chart-1: 12 76% 61%;

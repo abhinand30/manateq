@@ -24,7 +24,7 @@ const InvestorDetailPage = () => {
   
   const location = useLocation();
   const data = location.state?.data;
-  console.log(data)
+ 
   const investorData = [
     { id: 1, title: 'CR Number', value: data.CRNumber },
     { id: 2, title: 'Qatari Owned Percentage', value: 0 },
