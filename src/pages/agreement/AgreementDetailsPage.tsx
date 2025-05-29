@@ -77,7 +77,7 @@ const AgreementStatus = () => {
 
                     return (
                         <div key={index}>
-                            <p className="text-[#231F2099]">{title}</p>
+                            <p className="text-fade">{title}</p>
 
                             {name === 'status' ? (
                                 <div className="w-full max-w-[1000px] h-20 rounded-[10px] bg-white flex items-center p-2">
@@ -157,7 +157,7 @@ const AgreementDetails = () => {
                                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4  border  border-gray-200 dark:border-gray-700 dark:bg-gray-900 p-4">
                                                                 {agreementInformationHeader.map((info, index) => (
                                                                     <div key={index}>
-                                                                        <p className="text-[#231F2099]">{info.title}</p>
+                                                                        <p className="text-fade">{info.title}</p>
                                                                         <p>{agreementInformationData[info.name as keyof typeof agreementInformationData] === '' ? '--' : agreementInformationData[info.name as keyof typeof agreementInformationData]}</p>
                                                                     </div>
                                                                 ))}
@@ -168,7 +168,7 @@ const AgreementDetails = () => {
                                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4  border  border-gray-200 dark:border-gray-700 dark:bg-gray-900 p-4">
                                                                 {agreementRelatedInfoHeader.map((item, index) => (
                                                                     <div key={index}>
-                                                                        <p className="text-[#231F2099]">{item.title}</p>
+                                                                        <p className="text-fade">{item.title}</p>
                                                                         <p>{agreementRelatedInformationData[item.name as keyof typeof agreementRelatedInformationData] === '' ? '--' : agreementRelatedInformationData[item.name as keyof typeof agreementRelatedInformationData]}</p>
                                                                     </div>
                                                                 ))}
@@ -180,7 +180,7 @@ const AgreementDetails = () => {
                                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4  border  border-gray-200 dark:border-gray-700 dark:bg-gray-900 p-4">
                                                                 {agreementPlotInformationHeader.map((item, index) => (
                                                                     <div key={index}>
-                                                                        <p className="text-[#231F2099]">{item.title}</p>
+                                                                        <p className="text-fade">{item.title}</p>
                                                                         <p>{agreementPlotInformationData[item.name as keyof typeof agreementPlotInformationData] === '' ? '--' : agreementPlotInformationData[item.name as keyof typeof agreementPlotInformationData]}</p>
                                                                     </div>
                                                                 ))}

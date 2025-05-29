@@ -5,7 +5,7 @@ interface props {
 
   header: {
     id: number;
-    cell?: (row: any) => ReactNode;
+     cell?: (row: any) => ReactNode | Promise<ReactNode>;
     title: string;
     selector?: string;
   }[];

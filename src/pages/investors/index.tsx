@@ -11,6 +11,7 @@ import exportIcon from '@/assets/exportIcon.png'
 import detailIcon from '@/assets/icons/detailIcon.png';
 import searchIcon from '@/assets/icons/search.svg';
 import gridIcon from '@/assets/icons/gridIcon.png';
+import SubHeader from '@/components/SubHeader';
 
 
 
@@ -64,6 +65,7 @@ const InvestorsPage = () => {
   return (
     <Layout>
       <Header />
+      <SubHeader/>
       <div className='p-4 sticky '>
         {/* filter Contianer */}
         <div className='h-10 w-full flex justify-between px-4'>

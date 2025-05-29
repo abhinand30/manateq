@@ -71,7 +71,7 @@ const SidebarComponent = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className="p-5 rounded-[8px]">
                     <Link to={item.url}>
                       <img src={item?.icon} alt="icon" />
                       <span>{item.title}</span>

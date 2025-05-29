@@ -1,6 +1,6 @@
 import { ArrowUpRight, PlusIcon, RefreshCwIcon, SaveIcon } from 'lucide-react';
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
@@ -26,15 +26,10 @@ const ServiceRequestTabData = [
   { title: "Reference ID", value: "AG-LP-66664-0038833", },
   { title: "Status Reason", value: "Pending", },
 ];
-const ServiceRequestTabArray = [
-  { id: 1, name: 'General' },
-  { id: 2, name: 'Timeline' },
-  { id: 3, name: 'Administration' },
-  { id: 4, name: 'Audit History' },
-];
+
 
 const serviceRequest_process = {
-  duration: "Active for 5 days",
+  duration: 5,
   "stages": [
     {
       "stage": "Legal Team",
@@ -59,77 +54,6 @@ const serviceRequest_process = {
     }
   ]
 }
-
-
-const serviceRequestAuditHeader = [
-  { id: 1, selector: "changedDate", title: "Changed Date" },
-  { id: 2, cell: (row: any) => ClickableCell(row, "changedBy"), title: "Changed By" },
-  { id: 3, cell: (row: any) => ClickableCell(row, "event"), title: "Event" },
-  { id: 4, selector: "changedField", title: "Changed Field" },
-  { id: 5, selector: "oldValue", title: "Old Value" },
-  { id: 6, selector: "newValue", title: "New Value" }
-];
-function ServiceRequestDetailsPage() {
-  const [activeTab, setActiveTab] = useState<number>(1);
-  const renderComponent = () => {
-    switch (activeTab) {
-      case 1:
-        return <General />
-
-      case 2:
-        return <Timeline />
-      case 3:
-        return <Administration />
-      case 4:
-        return <AuditHistory />
-    }
-
-  }
-  const buttonArray=[
-    
-  ]
-  return (
-    <Layout>
-      <Header />
-      <SubHeader />
-      <div className="flex gap-2 p-2">
-        {/* Left side */}
-        <div className='w-3/4 p-2'>
-            <div className='flex justify-end gap-5 mb-4'>
-              {/* <img src={refreshIcon} alt="re" /> */}
-               <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><PlusIcon/> Add New Request</button>
-                <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><RefreshCwIcon/> Refresh</button>
-                 <button className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><SaveIcon/> Save</button>
-            </div>
-          <TabHeader data={ServiceRequestTabData} tabArray={ServiceRequestTabArray} activeTab={activeTab} setActiveTab={setActiveTab} />
-          {renderComponent()}
-        </div>
-
-        {/* Right side */}
-        <div>
-          <ProgressCard data={serviceRequest_process} />
-        </div>
-      </div>
-    </Layout>
-  )
-};
-
-export default ServiceRequestDetailsPage;
-
-const General = () => {
-
-
-  const serviceRequestBlackListHeader = [
-    { id: 1, title: 'Investor', name: 'invetor', isLink: true },
-    { id: 2, title: 'Contact Person', name: 'contactPerson', isLink: true },
-    { id: 3, title: 'Plot Number', name: 'plotNumber', isLink: true },
-    { id: 4, title: 'Current Agreement', name: 'currentAgreement', isLink: true },
-    { id: 5, title: 'Requesting Department', name: 'requestingDepartment', isLink: true },
-    { id: 6, title: 'Type', name: 'type', },
-    { id: 7, title: 'Comment', name: 'comment' },
-
-
-  ];
   const serviceReqBlackListGeneralData = {
     "investor": "Sosco WLI",
     "contactPerson": "Aftab Khan",
@@ -140,33 +64,146 @@ const General = () => {
     "comment": "---"
   }
 
+const serviceRequestBlackListHeader = [
+    { id: 1, title: 'Investor', name: 'invetor', isLink: true,isSearch:true },
+    { id: 2, title: 'Contact Person', name: 'contactPerson', isLink: true,isSearch:true },
+    { id: 3, title: 'Plot Number', name: 'plotNumber', isLink: true },
+    { id: 4, title: 'Current Agreement', name: 'currentAgreement', isLink: true,isSearch:true },
+    { id: 5, title: 'Requesting Department', name: 'requestingDepartment', isLink: true,isSearch:true },
+    { id: 6, title: 'Type', name: 'type', },
+    { id: 7, title: 'Comment', name: 'comment' },
+
+
+  ];
+
+const serviceRequestAuditHeader = [
+  { id: 1, selector: "changedDate", title: "Changed Date" },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field: "changedBy"}), title: "Changed By" },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field: "event"}), title: "Event" },
+  { id: 4, selector: "changedField", title: "Changed Field" },
+  { id: 5, selector: "oldValue", title: "Old Value" },
+  { id: 6, selector: "newValue", title: "New Value" }
+];
+ const agreementTimelineButtonsArray = [
+    { id: 1, title: 'Expand All Records', icon: expandIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
+    { id: 2, title: 'Refresh Timeline', icon: refreshIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
+    { id: 3, icon: searchIcon, onClick: () => (console.log('test')), style: 'bg-[#93A6B30F]' },
+    { id: 4, icon: menuIcon, onClick: () => (console.log('test')), style: 'flex shadow-sm justify-center' },
+  ]
+  const administartionBlackListData = {
+    "created_by": "Lama Yamout",
+    "created_on": "2025-01-09T09:40:00",
+    "modified_by": "Aftab Ahmed",
+    "modified_on": "2025-01-09T09:40:00",
+    "owner": "Finance Team",
+    "name": "1078"
+  }
+
+  const administartionHeaderBlackListHeader = [
+    { id: 1, title: 'Created By', name: 'created_by', isLink: true, },
+    { id: 2, title: 'Created On', name: 'created_on', },
+    { id: 3, title: 'Modified By', name: 'modified_by', isLink: true },
+    { id: 4, title: 'Modified On', name: 'modified_on', },
+    { id: 5, title: 'Owner', name: 'owner', isLink: true, isSearch: true },
+    { id: 6, title: 'Name', name: 'name', },
+
+  ]
+
+function ServiceRequestDetailsPage() {
+  const [activeTab, setActiveTab] = useState<number>(1);
+  const location = useLocation();
+     const value = location.state;
+
+  const ServiceRequestTabArray = [
+  {id:5,name:'Request Decision'},
+  {id:6,name:'Information'},
+  {id:7,name:'Decision'},
+  {id:8,name:'Land Transfer Request Details'},
+  { id: 1, name: 'General' },
+  { id: 2, name: 'Timeline' },
+  { id: 3, name: 'Administration' },
+  { id: 4, name: 'Audit History' },
+
+];
+    
+  const renderComponent = () => {
+    switch (activeTab) {
+      case 1:
+        return <General />
+      case 2:
+        return <Timeline />
+      case 3:
+        return <Administration />
+      case 4:
+        return <AuditHistory />
+    }
+  }
+
+
   return (
-    <div className='bg-white p-4'>
+    <Layout>
+      <Header />
+      <SubHeader />
+      <div className="flex gap-2 p-2 mt-5">
+        {/* Left side */}
+        <div className='w-3/4 p-2'>
+            <div className='flex justify-end gap-5 mb-4'>
+              {/* <img src={refreshIcon} alt="re" /> */}
+               <button onClick={()=>console.log('ggsss')} className='flex gap-2 text-[#83764F] border-[#83764F] rounded-lg  border-1 p-2  px-5'><PlusIcon/> Add New Request</button>
+                <button className='button-container bg-white rounded-lg  gap-3 px-5'><RefreshCwIcon color='#862634'/> Refresh</button>
+                 <button className='button-container bg-white rounded-lg  gap-3 px-5 '><SaveIcon color='#83764F'/> Save</button>
+            </div>
+          <TabHeader data={ServiceRequestTabData} tabArray={ServiceRequestTabArray} activeTab={activeTab} setActiveTab={setActiveTab} />
+          {renderComponent()}
+        </div>
+
+        {/* Right side */}
+        <div>
+          <ProgressCard data={serviceRequest_process} title={"Investor Blacklist Requests"}/>
+        </div>
+      </div>
+    </Layout>
+  )
+};
+
+export default ServiceRequestDetailsPage;
+
+const General = () => {
+
+  return (
+    <div className='bg-white p-4 rounded-[16px]'>
       <p className='text-redcolor mb-5'>Information</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 bg-bgColor rounded-[16px] dark:border-gray-700 dark:bg-gray-900 p-4">
-        {serviceRequestBlackListHeader.map(({ title, name, isLink }, index) => (
-          <div key={index}>
-            <p>{title}</p>
-            {name === 'comment' ? (
-              <div className='flex w-[500px] h-15 bg-white border-1 rounded-sm p-4'>
-                {serviceReqBlackListGeneralData[name]}
-              </div>
-            ) : (
-              <div className='flex items-center justify-between'>
-                <p className={`flex items-center ${isLink ? 'text-linkcolor' : ''}`}>
-                  {serviceReqBlackListGeneralData[name]} <ArrowUpRight className="size-[16px]" />
+        
+           {serviceRequestBlackListHeader.map(({ title, name, isLink, isSearch }, index) => (
+            <div key={index} className='flex items-center justify-between mb-5'>
+              
+            <div>
+              <p className='text-linkcolor'>{title}</p>
+              {name==='comment'?(
+                 <div className="flex items-center justify-between p-2 h-15  w-[1000px] bg-white rounded-lg">
+                <p className={'text-linkcolor '}>
+                  {serviceReqBlackListGeneralData[name]}
                 </p>
-                <button className='button-container size-[40px] border-1 bg-bgColor'>
-                  <img src={searchIcon} alt='search' />
-                </button>
-
+                
               </div>
-            )}
-
-
-
-          </div>
-        ))}
+              ):(
+                <div className="flex items-center justify-between">
+                <p className={`flex items-center ${isLink ? 'text-linkcolor underline' : ''}`}>
+                  {serviceReqBlackListGeneralData[name]} {isLink && <ArrowUpRight className="size-[16px]" />}
+                </p>
+                
+              </div>
+              )}
+              </div>
+              {isSearch && (
+                  <button className="button-container size-[40px] border-1 mr-5">
+                    <img src={searchIcon} alt="search" />
+                  </button>
+                )}
+              
+            </div>
+          ))}
       </div>
     </div>
   )
@@ -174,12 +211,7 @@ const General = () => {
 
 const Timeline = () => {
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
-  const agreementTimelineButtonsArray = [
-    { id: 1, title: 'Expand All Records', icon: expandIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
-    { id: 2, title: 'Refresh Timeline', icon: refreshIcon, onClick: () => (console.log('test')), style: 'border-1 border-[#83764F]  text-[#83764F]' },
-    { id: 3, icon: searchIcon, onClick: () => (console.log('test')), style: 'bg-[#93A6B30F]' },
-    { id: 4, icon: menuIcon, onClick: () => (console.log('test')), style: 'flex shadow-sm justify-center' },
-  ]
+ 
   return (
     <div className='p-4 bg-white shadow-sm mt-5 rounded-lg'>
       <div className='flex justify-between'>
@@ -234,7 +266,6 @@ const Timeline = () => {
                 <div className='flex bg-redcolor gap-2 text-white p-1 px-2 rounded-r-lg rounded-l-e-sm rounded-bl-lg w-[270px]'><img src={chatIcon} alt='logo' className='size-[20px]' />Email from:<Link to='#' className='underline'>Salman Hameed</Link></div>
                 <ViewMoreText text={email.msg} />
               </div>
-
             </div>
           ))
 
@@ -246,26 +277,9 @@ const Timeline = () => {
 }
 const Administration = () => {
 
-  const administartionBlackListData = {
-    "created_by": "Lama Yamout",
-    "created_on": "2025-01-09T09:40:00",
-    "modified_by": "Aftab Ahmed",
-    "modified_on": "2025-01-09T09:40:00",
-    "owner": "Finance Team",
-    "name": "1078"
-  }
-
-  const administartionHeaderBlackListHeader = [
-    { id: 1, title: 'Created By', name: 'created_by', isLink: true, },
-    { id: 2, title: 'Created On', name: 'created_on', },
-    { id: 3, title: 'Modified By', name: 'modified_by', isLink: true },
-    { id: 4, title: 'Modified On', name: 'modified_on', },
-    { id: 5, title: 'Owner', name: 'owner', isLink: true, isSearch: true },
-    { id: 6, title: 'Name', name: 'name', },
-
-  ]
+  
   return (
-    <div className='bg-white p-4'>
+    <div className='bg-white p-4 rounded-lg'>
       <p className='text-redcolor mb-5'>Administration</p>
       
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 bg-bgColor rounded-[16px] dark:border-gray-700 dark:bg-gray-900 p-4">

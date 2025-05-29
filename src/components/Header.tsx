@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <div className='flex justify-between items-center p-5  gap-10 border-b-1 px-10'>
             <div>
-                <span className='text-[#231F2099] text-[20px]'>Hello,</span>
+                <span className='text-fade text-[20px]'>Hello,</span>
                 <h6 className='font-[500] text-[20px]'>Mushthofa Ahmad Kamal</h6>
             </div>
             <div className='flex bg-[#ffffff] gap-4 w-200 shadow-sm p-3 rounded-xl'>

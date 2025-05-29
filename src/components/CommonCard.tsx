@@ -36,8 +36,8 @@ const CommonCard = (props) => {
             </div>
             <div className='px-4 mt-2'>
             <div className='flex justify-between'>
-                <text className="text-[14px] text-[#231F2099]">Modified On</text>
-                <text className='text-[14px] text-[#231F2099]'>Commencement Date</text>
+                <text className="text-[14px] text-fade">Modified On</text>
+                <text className='text-[14px] text-fade'>Commencement Date</text>
             </div>
             <div className='flex justify-between'>
                 <p>25/11/2024 12:13</p>

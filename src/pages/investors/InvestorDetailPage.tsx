@@ -65,7 +65,7 @@ const InvestorDetailPage = () => {
         <div className='h-[260px] w-auto  shadow-sm rounded-[10px] py-4 mb-5'>
           <div className='flex px-4  gap-2'>
             <img src={buildingIcon} alt='logo' />
-            <span className='text-[#231F2099]'>Investor</span>
+            <span className='text-fade'>Investor</span>
           </div>
           <div className='flex items-center gap-2 uppercase mt-5 px-4'>
             <img src={profileImage} alt='img' className='size-[56px] rounded-full' />
@@ -75,7 +75,7 @@ const InvestorDetailPage = () => {
           <div className='m-5 mx-20 flex gap-10 justify-between'>
             {investorData.map((investor, index) => (
               <div key={index}>
-                <p className='text-[14px] font-light text-[#231F2099] '>{investor?.title}</p>
+                <p className='text-[14px] font-light text-fade '>{investor?.title}</p>
                 <p>{investor?.value}</p>
               </div>
             ))}
@@ -228,7 +228,7 @@ const Summary = () => {
                               <div className="grid grid-cols-2 md:grid-cols-4 gap-4  border  border-gray-200 dark:border-gray-700 dark:bg-gray-900 p-4">
                                 {investorInformationHeader.map((info, index) => (
                                   <div key={index}>
-                                    <p className="text-[#231F2099]">{info.title}</p>
+                                    <p className="text-fade">{info.title}</p>
                                     <p>{investorInformationData[info.name] === '' ? '--' : investorInformationData[info.name]}</p>
                                   </div>
                                 ))}
@@ -242,7 +242,7 @@ const Summary = () => {
                             return <div className="grid grid-cols-2 md:grid-cols-4 gap-4  border  border-gray-200 dark:border-gray-700 dark:bg-gray-900 p-4">
                               {investorProfileHeader.map((info, index) => (
                                 <div key={index}>
-                                  <p className="text-[#231F2099]">{info.title}</p>
+                                  <p className="text-fade">{info.title}</p>
                                   <p>{investorProfile[info.name] === '' ? '--' : investorProfile[info.name]}</p>
                                 </div>
                               ))}

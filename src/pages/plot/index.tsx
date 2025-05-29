@@ -12,6 +12,7 @@ import exportIcon from '@/assets/exportIcon.png';
 import detailIcon from '@/assets/icons/detailIcon.png';
 import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
+import SubHeader from '@/components/SubHeader';
 
 const statusArray = [
   { id: 1, name: 'All', value: 'all' },
@@ -106,10 +107,11 @@ const PlotsPage = () => {
   return (
     <Layout>
       <Header />
-
+      <SubHeader/>
+      <div className='p-5'>
       <div className='h-10 w-[100%] flex justify-between px-4 mt-4'>
         <div className='flex gap-5'>
-          <button className='flex size-10 rounded-sm shadow-lg items-center justify-center'>
+          <button className='flex size-10 rounded-lg bg-white items-center justify-center'>
             <img src={searchIcon} className='size-6' />
           </button>
            <DropDownComponent
@@ -133,11 +135,11 @@ const PlotsPage = () => {
         </div>
 
         <div className='flex gap-5'>
-          <button className='flex p-2 gap-2 shadow-sm rounded-lg h-10 items-center'>
+          <button className='flex bg-white px-5 p-2 gap-2 shadow-sm rounded-xl h-10 items-center'>
             <img src={exportIcon} alt='export' className='size-5' />
             export
           </button>
-          <button onClick={handleGrid} className='flex p-2 gap-2 shadow-sm rounded-lg h-10 items-center'>
+          <button onClick={handleGrid} className='flex p-2 px-2 gap-2 bg-white shadow-sm rounded-xl h-10 items-center'>
             <img src={gridIcon} alt='icon' className='size-5' />
             {grid ? 'Grid View' : 'List View'}
           </button>
@@ -158,7 +160,7 @@ const PlotsPage = () => {
         </div>
 
       )}
-
+</div>
     </Layout>
   )
 }

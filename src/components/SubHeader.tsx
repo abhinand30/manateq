@@ -12,7 +12,7 @@ const SubHeader = () => {
   return (
     <div className=' border-b-1 h-25 px-10 p-3'>
       <h1 className='text-[28px]'>Service Requests</h1>
-      <div className='flex items-center'>
+      <div className='flex items-center gap-3'>
         <img src={homeIcon} className='size-[20px]' alt='home' />
 
         <Breadcrumb>

@@ -10,6 +10,7 @@ import detailIcon from '@/assets/icons/detailIcon.png';
 import gridIcon from '@/assets/icons/gridIcon.png';
 import CommonCard from '@/components/CommonCard';
 import { ClickableCell } from '@/components/ClickableCell';
+import SubHeader from '@/components/SubHeader';
 
 
 // 
@@ -237,10 +238,10 @@ const AgreementsPage = () => {
 // cell:(row:any)=>ClickableCell(row,''),title:''
   const TableHeader = [
     
-    {id:1,cell:(row:any)=>ClickableCell(row,'referenceID'),title:'Reference ID'},
-    { id: 2, cell:(row:any)=>ClickableCell(row,'investor'), title: "Investor" },
-    { id: 3, cell:(row:any)=>ClickableCell(row,'project'), title: "Project" },
-    { id: 4, cell:(row:any)=>ClickableCell(row,'plot'), title: "Plot" },
+    {id:1,cell:(row:any)=>ClickableCell({row:row, field:'referenceID'}),title:'Reference ID'},
+    { id: 2, cell:(row:any)=>ClickableCell({row:row, field:'investor'}), title: "Investor" },
+    { id: 3, cell:(row:any)=>ClickableCell({row:row, field:'project'}), title: "Project" },
+    { id: 4, cell:(row:any)=>ClickableCell({row:row, field:'plot'}), title: "Plot" },
     { id: 5,selector:'industrialApplicatons', title: "Industrial Applications" },
     { id: 6, selector:'statusReason', title: "Status Reason" },
     { id: 7, selector:'createdOn', title: "Created On" },
@@ -265,6 +266,7 @@ const AgreementsPage = () => {
   return (
     <Layout>
       <Header />
+      <SubHeader />
 
       <div className='h-10  flex justify-between px-4 mt-4'>
         <div className='flex gap-5'>

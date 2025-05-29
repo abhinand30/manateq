@@ -13,7 +13,8 @@ import CommonCard from '@/components/CommonCard';
 import { ClickableCell } from '@/components/ClickableCell';
 import SubHeader from '@/components/SubHeader';
 import { returnSelectTitle } from '@/lib/utils';
-import { agreementExpiryData, allServiceRequestData, investorBlackListData, investorBlockData, landSwapData, landTransferData, plotMergeData, plotSizeChangeData } from '@/data/data';
+import { agreementExpiryData, allServiceRequestData, investorBlackListData, investorBlockData, 
+  landSwapData, landTransferData, plotMergeData, plotSizeChangeData } from '@/data/data';
 
 
 
@@ -34,28 +35,28 @@ const filterByArray = [
 ]
 
 const investorBlackLIstHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
   { id: 3, selector: "type", title: "Type" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'requestingDepartment'), title: 'Requesting Department' },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'requestingDepartment'}), title: 'Requesting Department' },
   { id: 3, selector: "createdOn", title: "createdOn" },
 ]
 
 const investorBlockHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: "Current Agreement" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'currentAgreement'}), title: "Current Agreement" },
   { id: 5, selector: "createdOn", title: "createdOn" },
 ]
 
 const serviceRequestsArray = [
   { id: 0, name: 'All Service Requests', value: 'allServiceRequest' },
   { id: 1, name: 'Investor Blacklist', value: 'investorBlacklist' },
-  { id: 2, name: 'Block/Unblock Investor (Finance)', value: 'Block/UnblockInvestor' },
+  { id: 2, name: 'Block/Unblock Investor (Finance)', value: 'blockUnblockInvestor' },
   { id: 3, name: 'Steps In Rights Block Plot', value: 'blockPlot' },
   { id: 4, name: 'Steps In Rights Unblock Plot', value: 'unblockPlot' },
-  { id: 5, name: 'Agreement Expiry and Renewal', value: 'agreementExpiry&Renewal' },
+  { id: 5, name: 'Agreement Expiry and Renewal', value: 'agreementExpiryRenewal' },
   { id: 6, name: 'Termination', value: 'termination' },
   { id: 7, name: 'Land Swap', value: 'landSwap' },
   { id: 8, name: 'Plot Merge', value: 'plotMerge' },
@@ -67,16 +68,16 @@ const serviceRequestsArray = [
 
 
 const agreementExpiryHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'Agreement'), title: "Agreement" },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'industrialApplications'), title: "Industrial Applications" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'Agreement'}), title: "Agreement" },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'industrialApplications'}), title: "Industrial Applications" },
   { id: 4, selector: "createdOn", title: "Agreement Renewal Decision" },
   { id: 5, selector: "Plot", title: "plot" },
-  { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
+  { id: 6, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
 ]
 const terminationHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
   { id: 2, selector: "createdOn", title: "Created On" },
 ]
 const terminationData = [
@@ -87,41 +88,41 @@ const terminationData = [
   { "refId": "36724", "createdOn": "25/11/2024 - 12:27" }
 ]
 const landSwapHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: "Current Agreement" },
-  { id: 5, cell: (row: any) => ClickableCell(row, 'newAgreement'), title: "New Agreement" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'currentAgreement'}), title: "Current Agreement" },
+  { id: 5, cell: (row: any) => ClickableCell({row:row, field:'newAgreement'}), title: "New Agreement" },
   { id: 6, selector: "createdOn", title: "Created On" },
 ];
 
 
 
 const plotMergeHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'plot1'), title: "Plot 1" },
-  { id: 5, cell: (row: any) => ClickableCell(row, 'plot2'), title: "Plot 2" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'plot1'}), title: "Plot 1" },
+  { id: 5, cell: (row: any) => ClickableCell({row:row, field:'plot2'}), title: "Plot 2" },
   { id: 6, selector: "createdOn", title: "Created On" },
 ];
 const plotSizeChangeHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: 'Reference ID' },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: 'Reference ID' },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'plot'}), title: "Plot" },
   { id: 5, selector: "createdOn", title: "Created On" },
 ];
 
 const landTransferHeader = [
-  { id: 1, cell: (row: any) => ClickableCell(row, 'refId'), title: "Reference ID", },
-  { id: 2, cell: (row: any) => ClickableCell(row, 'applicant'), title: "Applicant" },
-  { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-  { id: 4, cell: (row: any) => ClickableCell(row, 'investor'), title: 'Investor' },
-  { id: 5, cell: (row: any) => ClickableCell(row, 'Agreement'), title: "Agreement" },
-  { id: 6, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
-  { id: 7, cell: (row: any) => ClickableCell(row, 'transferToInvestor'), title: "Transfer to Investor" },
-  { id: 8, cell: (row: any) => ClickableCell(row, 'newContactPerson'), title: "New Contact Person" },
+  { id: 1, cell: (row: any) => ClickableCell({row:row, field:'refId'}), title: "Reference ID", },
+  { id: 2, cell: (row: any) => ClickableCell({row:row, field:'applicant'}), title: "Applicant" },
+  { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+  { id: 4, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'Investor' },
+  { id: 5, cell: (row: any) => ClickableCell({row:row, field:'Agreement'}), title: "Agreement" },
+  { id: 6, cell: (row: any) => ClickableCell({row:row, field: 'plot'}), title: "Plot" },
+  { id: 7, cell: (row: any) => ClickableCell({row:row, field:'transferToInvestor'}), title: "Transfer to Investor" },
+  { id: 8, cell: (row: any) => ClickableCell({row:row, field: 'newContactPerson'}), title: "New Contact Person" },
   { id: 9, selector: "requestStatus", title: "Request Status" },
   { id: 10, selector: "statusReason", title: "Status Reason" },
 ];
@@ -140,13 +141,13 @@ const ServiceRequestsPage = () => {
   });
  
   const allServiceRequestHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "refId", },
-    { id: 2, cell: (row: any) => ClickableCell(row, 'applicant'), title: "Applicant" },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'contactPerson'), title: "Contact Person" },
-    { id: 4, cell: (row: any) => ClickableCell(row, 'investor'), title: "investor", },
-    { id: 5, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
-    { id: 6, cell: (row: any) => ClickableCell(row, 'plot'), title: "Plot" },
-    { id: 7, cell: (row: any) => ClickableCell(row, 'requestType'), title: "Request Type" },
+    { id: 1, cell: (row: any) => ClickableCell({row:row, field:'referenceID',value:filters.serviceRequestType}), title: "refId", },
+    { id: 2, cell: (row: any) => ClickableCell({row:row, field:'applicant'}), title: "Applicant" },
+    { id: 3, cell: (row: any) => ClickableCell({row:row, field:'contactPerson'}), title: "Contact Person" },
+    { id: 4, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: "investor", },
+    { id: 5, cell: (row: any) => ClickableCell({row:row, field:'agreement'}), title: "Agreement" },
+    { id: 6, cell: (row: any) => ClickableCell({row:row, field:'plot'}), title: "Plot" },
+    { id: 7, cell: (row: any) => ClickableCell({row:row, field:'requestType'}), title: "Request Type" },
     { id: 8, selector: "requestStatus", title: "Request Status" },
     { id: 9, selector: "serviceStatus", title: "Service Status" },
     { id: 10, cell: (row: any) => <button onClick={() => navigate(`${row?.owner}`, { state: { data: row } })} className="flex  gap-1 items-center "><img src={row?.ownerImage} alt='img' className="profile-container" />{row.owner}</button>, title: 'Onwer' },
@@ -243,11 +244,11 @@ const ServiceRequestsPage = () => {
 
 
           <div className='flex gap-5'>
-            <button className='button-container h-10 p-4'>
+            <button className='button-container bg-white p-4'>
               <img src={exportIcon} alt='export' className='size-5' />
               export
             </button>
-            <button onClick={handleGrid} className='button-container h-10 p-4'>
+            <button onClick={handleGrid} className='button-container bg-white p-4'>
               <img src={gridIcon} alt='icon' className='size-5' />
               {grid ? 'Grid View' : 'List View'}
             </button>

@@ -165,8 +165,8 @@ export const agreementTimelineButtonsArray = [
 
 
 export const agreementAllTableHeader = [
-        { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "Reference ID" },
-        { id: 2, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
+        { id: 1, cell: (row: any) => ClickableCell({row:row,field: 'referenceID'}), title: "Reference ID" },
+        { id: 2, cell: (row: any) => ClickableCell({row:row,field:'agreement'}), title: "Agreement" },
         { id: 3, selector: "mandatory", title: "Mandatory" },
         { id: 4, selector: "collectedAmount", title: "Details Collected Amount" },
         { id: 5, selector: "remainingAmount", title: "Details Remaining Amount" },
@@ -199,8 +199,8 @@ export const agreementAllTableHeader = [
 
 
     export const agreementOverDueHeader = [
-        { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "Reference ID" },
-        { id: 2, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
+        { id: 1, cell: (row: any) => ClickableCell({row:row,field:'referenceID'}), title: "Reference ID" },
+        { id: 2, cell: (row: any) => ClickableCell({row:row,field:'agreement'}), title: "Agreement" },
         { id: 3, selector: "netValue", title: "Net Value" },
         { id: 4, selector: 'detailsAmount', title: 'Details Amount' },
         { id: 5, selector: 'detailsCollectedAmount', title: 'Details Collected Amount' },
@@ -326,9 +326,9 @@ export const agreementAllTableHeader = [
                 "createdOn": "05/03/2025 15:17"
             }
         ];
-    export const  agreementDueMonthHeader = [...agreementOverDueHeader, { id: 10, cell: (row: any) => ClickableCell(row, 'investor'), title: "Investor" },]
-    export const agreementReturnHeader = [{ id: 1, cell: (row: any) => ClickableCell(row, 'Ref_ID'), title: "Reference ID" },
-    { id: 2, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
+    export const  agreementDueMonthHeader = [...agreementOverDueHeader, { id: 10, cell: (row: any) => ClickableCell({row:row,field:'investor'}), title: "Investor" },]
+    export const agreementReturnHeader = [{ id: 1, cell: (row: any) => ClickableCell({row:row,field:'Ref_ID'}), title: "Reference ID" },
+    { id: 2, cell: (row: any) => ClickableCell({row:row,field:'agreement'}), title: "Agreement" },
     { id: 3, selector: 'Agreement', title: 'Agreement' },
     { id: 4, selector: 'Net_Value', title: 'Net Value' },
     { id: 5, selector: 'Status_Reason', title: 'Status Reason' },
@@ -387,8 +387,8 @@ export const agreementAllTableHeader = [
     ];
 
      export const agreementOperationalHeader = [
-        { id: 1, cell: (row: any) => ClickableCell(row, 'referenceID'), title: "Reference ID" },
-        { id: 2, cell: (row: any) => ClickableCell(row, 'agreement'), title: "Agreement" },
+        { id: 1, cell: (row: any) => ClickableCell({row:row,field:'referenceID'}), title: "Reference ID" },
+        { id: 2, cell: (row: any) => ClickableCell({row:row,field:'agreement'}), title: "Agreement" },
         { id: 3, selector: "mandatory", title: "Mandatory" },
         { id: 4, selector: "SLADuration", title: "SLA Duration" },
         { id: 5, selector: "SLADurationType", title: "SLA Duration Type" },

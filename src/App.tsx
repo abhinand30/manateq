@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider,  } from "react-router-dom"
 
 import DashboardPage from "./pages/dashBoard"
 import NotFound from "./pages/NotFound"
@@ -10,7 +10,7 @@ import InvestorDetailPage from './pages/investors/InvestorDetailPage'
 import PlotDetailsPage from "./pages/plot/PlotDetailsPage"
 import ServiceRequestDetailsPage from "./pages/serviceRequest/ServiceRequestDetailsPage"
 import AgreementDetailsPage from "./pages/agreement/AgreementDetailsPage"
-
+// import RoutePathProvider from '@/lib/'
 function App() {
   const router = createBrowserRouter([
     {
@@ -53,7 +53,10 @@ function App() {
   ]);
   
   return (
-    <RouterProvider router={router}/>  
+
+       <RouterProvider router={router}/>  
+    
+   
   )
 }
 

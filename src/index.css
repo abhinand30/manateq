@@ -42,7 +42,9 @@
   /*  */
    --color-redcolor: #862634;
   --color-bgColor:#F8F8F8;
-  --color-linkcolor:#83764F
+  --color-linkcolor:#83764F;
+  --color-fade:#231F2099
+
 }
 
 :root {

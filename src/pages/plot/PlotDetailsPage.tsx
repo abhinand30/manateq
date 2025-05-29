@@ -98,17 +98,17 @@ const investorData = [
   ];
 
     const plotAllApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 1, cell: (row: any) => ClickableCell({row:row, field:'applicantID'}), title: 'Applicant ID' },
     { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
-    { id: 4, cell: (row: any) => ClickableCell(row, 'assignedbussinessAnalyst'), title: 'Assigned Bussiness Analyst' },
+    { id: 3, cell: (row: any) => ClickableCell({row:row, field:'owner'}), title: 'Owner' },
+    { id: 4, cell: (row: any) => ClickableCell({row:row, field:'assignedbussinessAnalyst'}), title: 'Assigned Bussiness Analyst' },
     { id: 5, title: 'Application Status', selector: 'applicationStatus' },
     { id: 6, title: 'External Status', selector: 'externalStatus' },
     { id: 7, title: 'Created On', selector: 'createdOn' },
     { id: 8, title: 'Submission Date', selector: 'submissionDate' },
     { id: 9, title: 'Completion Date', selector: 'completionDate' },
-    { id: 10, cell: (row: any) => ClickableCell(row, 'plotNumber'), title: 'Plot Number' },
-    { id: 11, cell: (row: any) => ClickableCell(row, 'currentAgreement'), title: 'Current Agreement' },
+    { id: 10, cell: (row: any) => ClickableCell({row:row, field:'plotNumber'}), title: 'Plot Number' },
+    { id: 11, cell: (row: any) => ClickableCell({row:row, field:'currentAgreement'}), title: 'Current Agreement' },
     { id: 12, title: 'Commencement Date', selector: 'commencementDate' },
     { id: 13, title: 'End Date (Current)', selector: 'endDate' },
   ];
@@ -120,14 +120,14 @@ const investorData = [
 
 
   const plotRelatedApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 1, cell: (row: any) => ClickableCell({row:row, field:'applicantID'}), title: 'Applicant ID' },
     { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
+    { id: 3, cell: (row: any) => ClickableCell({row:row, field:'applicant'}), title: 'Applicant' },
     { id: 4, title: 'Email (Applicant)', selector: 'email' },
     { id: 5, title: 'Mobile', selector: 'mobile' },
-    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
+    { id: 6, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'investor' },
     { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
-    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
+    { id: 8, cell: (row: any) => ClickableCell({row:row, field:'owner'}), title: 'Owner' },
     { id: 9, title: 'Application Status', selector: 'applicationStatus' },
     { id: 10, title: 'External Status', selector: 'externalStatus' },
     { id: 11, title: 'Created On', selector: 'createdOn' },
@@ -138,14 +138,14 @@ const investorData = [
 
   ]
   const plotCommercialApplicationHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'applicantID'), title: 'Applicant ID' },
+    { id: 1, cell: (row: any) => ClickableCell({row:row, field: 'applicantID'}), title: 'Applicant ID' },
     { id: 2, title: 'Location', selector: 'location' },
-    { id: 3, cell: (row: any) => ClickableCell(row, 'applicant'), title: 'Applicant' },
+    { id: 3, cell: (row: any) => ClickableCell({row:row, field:'applicant'}), title: 'Applicant' },
     { id: 4, title: 'Email (Applicant)', selector: 'email' },
     { id: 5, title: 'Mobile', selector: 'mobile' },
-    { id: 6, cell: (row: any) => ClickableCell(row, 'investor'), title: 'investor' },
+    { id: 6, cell: (row: any) => ClickableCell({row:row, field:'investor'}), title: 'investor' },
     { id: 7, title: 'CR Number(Investors)', selector: 'CRNumber' },
-    { id: 8, cell: (row: any) => ClickableCell(row, 'owner'), title: 'Owner' },
+    { id: 8, cell: (row: any) => ClickableCell({row:row, field:'owner'}), title: 'Owner' },
     { id: 9, title: 'Application Status', selector: 'applicationStatus' },
     { id: 10, title: 'External Status', selector: 'externalStatus' },
     { id: 11, title: 'Created On', selector: 'createdOn' },
@@ -219,7 +219,7 @@ const General = () => {
         <div className="grid grid-cols-2 items-center md:grid-cols-4 gap-4 p-4">
           {headers.map(({ title, name, link, buttons }, index) => (
             <div key={index}>
-              <p className="text-[#231F2099] mb-1">{title}</p>
+              <p className="text-fade mb-1">{title}</p>
               {link ? (
                 <button onClick={() => console.log(data[link])} className='flex text-[#83764F] items-center'>{data[name] ? data[name] : "--"}   <ArrowUpRight size={20} color='#83764F' /></button>
               ) : buttons ? (
@@ -298,13 +298,13 @@ const PlotAccess = () => {
   const [exportType, setExportType] = useState<string>('');
   const navigate = useNavigate();
     const plotAccessHeader = [
-    { id: 1, cell: (row: any) => ClickableCell(row, 'referenceNo'), title: 'Reference Number' },
+    { id: 1, cell: (row: any) => ClickableCell({row:row, field:'referenceNo'}), title: 'Reference Number' },
     { id: 2, title: 'Action Taken', selector: 'actionTaken' },
     {
       id: 3, cell: (row: any) => <button onClick={() => navigate(`${row.loggedInUser}`, { state: { data: row } })} className="flex  gap-2 items-center text-[#83764F] underline underline-offset-2 decoration-[#83764F]"><img src={profileImage} className="size-[30px] rounded-full" alt="Profile" />{row.loggedInUser}<ArrowUpRight className="size-[16px]" />
       </button>, title: 'Logged In User'
     },
-    { id: 4, cell: (row: any) => ClickableCell(row, 'plot'), title: 'Plot' },
+    { id: 4, cell: (row: any) => ClickableCell({row:row, field:'plot'}), title: 'Plot' },
     { id: 5, title: 'Action Date', selector: 'actionDate' },
   ]
 
@@ -360,8 +360,8 @@ const AuditHistory = () => {
   //{id:,cell:(row:any)=>ClickableCell(row,''),title:''},
   const TableHeader = [
     { id: 1, selector: "changedDate", title: "Changed Date", },
-    { id: 2, cell: (row: any) => ClickableCell(row, 'changedBy'), title: "Changed By", },
-    { id: 3, cell: (row: any) => ClickableCell(row, "event"), title: "Event" },
+    { id: 2, cell: (row: any) => ClickableCell({row:row, field:'changedBy'}), title: "Changed By", },
+    { id: 3, cell: (row: any) => ClickableCell({row:row, field:"event"}), title: "Event" },
     { id: 4, selector: "changedField", title: "Changed Field" },
     { id: 5, selector: "oldValue", title: "Old Value", },
     { id: 6, selector: "newValue", title: "New Value" },
